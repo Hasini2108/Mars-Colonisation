@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit & Opportunity Rovers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            background-image: url(images/new\ bc.jpg);
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Interactive Button Style */
+        .interactive {
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .interactive:hover {
+            background: rgba(246, 245, 245, 0.8);
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 10% 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+            gap: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Big Card for Table */
+        .big-card {
+            background: rgba(34, 34, 34, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Content Section */
+        .content-section {
+            display: flex;
+            width: 100%;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .text-content {
+            flex: 2;
+            text-align: left;
+        }
+
+        .image-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .text-content h2 {
+            color: #f9f8f6;
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .image-column img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        /* People Section */
+        .people-section {
+            display: flex;
+            width: 100%;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .people-text {
+            flex: 2;
+            text-align: left;
+        }
+
+        .people-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .people-text h2 {
+            color: #fbfbf9;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .people-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .info-list {
+            list-style-type: none;
+            margin-top: 25px;
+        }
+
+        .info-list li {
+            margin-bottom: 18px;
+            padding-left: 22px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .info-list li:before {
+            content: "•";
+            color: #ffffff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        .info-list strong {
+            color: #fafaf8;
+            font-weight: 500;
+        }
+
+        .people-images img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        /* Video Card */
+        .video-card {
+            background: rgba(34, 34, 34, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-card h2 {
+            margin-bottom: 20px;
+            color: #f6f5f3;
+            font-size: 32px;
+        }
+
+        .video-card p {
+            margin-bottom: 25px;
+            font-size: 17px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            font-weight: 600;
+            color: #fcfcfb;
+            border-bottom: 2px solid #ffffff;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+            vertical-align: top;
+        }
+
+        td b {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1000px) {
+            .content-section, .people-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            header {
+                padding: 15px 5%;
+            }
+            
+            .hero {
+                padding: 100px 5% 50px;
+            }
+            
+            iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <button class="interactive" onclick="goBack()">Return</button>
+        <div class="nav-links">
+            <h1 class="interactive" id="anatomy-link">Anatomy</h1>
+            <h1 class="interactive" id="people-link">People Behind the Magic</h1>
+        </div>
+    </header>
+
+    <div class="hero">
+        <!-- Big Card for Table -->
+        <div class="big-card">
+            <h2>Spirit & Opportunity Rover Details</h2>
+            <table>
+                <tr>
+                    <th>Part</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><b>Body</b></td>
+                    <td>A strong structure that protects the rovers' vital organs like computers, electronics, and sensors.</td>
+                </tr>
+                <tr>
+                    <td><b>Brains</b></td>
+                    <td>Computers to process information.</td>
+                </tr>
+                <tr>
+                    <td><b>Temperature Controls</b></td>
+                    <td>Internal heaters, insulation, and protection from extreme temperatures.</td>
+                </tr>
+                <tr>
+                    <td><b>"Neck and Head"</b></td>
+                    <td>A mast for cameras to provide a human-scale view.</td>
+                </tr>
+                <tr>
+                    <td><b>Eyes and other "Senses"</b></td>
+                    <td>Cameras and instruments that provide environmental information.</td>
+                </tr>
+                <tr>
+                    <td><b>Arm</b></td>
+                    <td>A robotic arm with flexibility through three joints for scientific instruments.</td>
+                </tr>
+                <tr>
+                    <td><b>Wheels and "Legs"</b></td>
+                    <td>Parts for mobility.</td>
+                </tr>
+                <tr>
+                    <td><b>Energy</b></td>
+                    <td>Batteries and solar panels.</td>
+                </tr>
+                <tr>
+                    <td><b>Communications</b></td>
+                    <td>Antennas for "speaking" and "listening".</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- Anatomy Content Section -->
+        <div class="content-section" id="anatomy">
+            <div class="text-content">
+                <h2>Anatomy of Spirit & Opportunity</h2>
+                <p>Spirit (and its twin, Opportunity) are six-wheeled, solar-powered robots standing 1.5 meters (4.9 ft) high, 2.3 meters (7.5 ft) wide and 1.6 meters (5.2 ft) long and weighing 180 kilograms (400 lb). Six wheels on a rocker-bogie system enabled mobility over rough terrain. Each wheel had its own motor. The vehicle was steered at front and rear and was designed to operate safely at tilts of up to 30 degrees. The maximum speed was 5 centimeters per second (2.0 in/s);[33] 0.18 kilometers per hour (0.11 mph), although the average speed was about 1 centimeter per second (0.39 in/s). Both Spirit and Opportunity have pieces of the fallen World Trade Center's metal on them that were "turned into shields to protect cables on the drilling mechanisms".</p>
+                <p>Solar arrays generated about 140 watts for up to fourteen hours per sol, while rechargeable lithium ion batteries stored energy for use at night. Spirit's onboard computer uses a 20 MHz RAD6000 CPU with 128 MB of DRAM and 3 MB of EEPROM.[36] The rover's operating temperature ranges from −40 to +40 °C (−40 to 104 °F) and radioisotope heaters provide a base level of heating, assisted by electrical heaters when necessary.</p>
+                <p>Communications depended on an omnidirectional low-gain antenna communicating at a low data rate and a steerable high-gain antenna, both in direct contact with Earth. A low-gain antenna was also used to relay data to spacecraft orbiting Mars.</p>
+            </div>
+            <div class="image-column">
+                <img src="images/anotomy1.jpg" alt="Rover Anatomy">
+                <img src="images/anotomy2.JPG" alt="Rover Anatomy">
+            </div>
+        </div>
+
+        <!-- People Behind the Magic Section -->
+        <div class="people-section" id="people">
+            <div class="people-text">
+                <h2>The People Behind the Magic</h2>
+                <h3>The Twin Mars Rovers: Spirit & Opportunity</h3>
+                <p>The twin Mars rovers, Spirit and Opportunity, were designed and built by NASA's Jet Propulsion Laboratory (JPL), with Pete Theisinger as the project manager and Steve Squyres of Cornell University as the principal investigator for the science instruments.</p>
+        
+                <ul class="info-list">
+                    <li><strong>NASA's Jet Propulsion Laboratory (JPL):</strong> JPL was responsible for the overall design and construction of the rovers.</li>
+                    <li><strong>Pete Theisinger:</strong> He served as the Mars Exploration Rover (MER) project manager.</li>
+                    <li><strong>Steve Squyres (Cornell University):</strong> Squyres led the science team responsible for developing the instruments that Spirit and Opportunity carried.</li>
+                    <li><strong>Mars Exploration Rover (MER) Mission:</strong> The Spirit and Opportunity rovers were part of NASA's Mars Exploration Rover (MER) mission, which aimed to explore the Martian surface and geology.</li>
+                    <li><strong>Mission Goals:</strong> The rovers were sent to Mars to search for clues about the planet's history of water and whether it could have ever supported life.</li>
+                    <li><strong>Twin Rovers:</strong> NASA decided to build two rovers (Spirit and Opportunity) to increase the chances of mission success.</li>
+                    <li><strong>Landing Sites:</strong> The rovers landed on opposite sides of the planet, allowing scientists to explore different regions and geological features.</li>
+                    <li><strong>Scientific Instruments:</strong> The rovers carried a suite of scientific instruments, including cameras, spectrometers, and a rock abrasion tool, to analyze the Martian surface and rocks.</li>
+                </ul>
+            </div>
+            <div class="people-images">
+                <img src="images/ppl2.jpg" alt="NASA Engineers">
+                <img src="images/ppl3.jpg" alt="NASA Engineers">
+            </div>
+        </div>
+
+        <!-- Video Card -->
+        <div class="video-card">
+            <h2>Explore More</h2>
+            <p>Watch this video to learn more about the Spirit & Opportunity rovers.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/r1gd7VCsQg8?si=jmGbcNuQBRInu7b2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-crossing" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById("anatomy-link").addEventListener("click", function () {
+            document.getElementById("anatomy").scrollIntoView({ behavior: "smooth" });
+        });
+
+        document.getElementById("people-link").addEventListener("click", function () {
+            document.getElementById("people").scrollIntoView({ behavior: "smooth" });
+        });
+    </script>
+
+</body>
+</html>

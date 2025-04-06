@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valles Marineris - Mars Exploration</title>
+  <meta name="description" content="Learn about Valles Marineris, the Grand Canyon of Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    .info-box {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px;
+      border-radius: var(--radius);
+      display: none;
+      font-size: 14px;
+      max-width: 200px;
+      z-index: 10;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .hotspot:hover {
+      transform: scale(1.2);
+    }
+    .hotspot:hover + .info-box {
+      display: block;
+    }
+    .feature-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius);
+    }
+    .feature-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .feature-facts {
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      transition: background-color 0.3s ease;
+    }
+    .external-link:hover {
+      background-color: var(--accent);
+    }
+    .comparison {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      gap: 1rem;
+    }
+    .comparison-item {
+      flex: 1;
+      text-align: center;
+    }
+    .comparison-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .comparison {
+        flex-direction: column;
+      }
+    }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .gallery-img {
+      width: 100%;
+      border-radius: var(--radius);
+      transition: transform 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .image-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="feature-content">
+        <h1>Valles Marineris</h1>
+        <p>The "Grand Canyon of Mars" - one of the largest canyon systems in the solar system</p>
+        
+        <div class="image-container">
+          <img src="images/valles-marineris.jpg" alt="Valles Marineris" class="feature-img">
+          
+          <!-- Hotspots for hover info -->
+          <div class="hotspot" style="top: 120px; left: 150px;"></div>
+          <div class="info-box" style="top: 140px; left: 170px;">Melas Chasma, one of the deepest sections of Valles Marineris.</div>
+          
+          <div class="hotspot" style="top: 100px; left: 300px;"></div>
+          <div class="info-box" style="top: 120px; left: 320px;">Candor Chasma, showing layered deposits that may indicate past water activity.</div>
+          
+          <div class="hotspot" style="top: 150px; left: 450px;"></div>
+          <div class="info-box" style="top: 170px; left: 470px;">Coprates Chasma, one of the main troughs in the canyon system.</div>
+        </div>
+        
+        <div class="feature-facts">
+          <h2>Key Facts</h2>
+          <ul>
+            <li>Length: 4,000 km (2,500 miles) - would stretch across the entire United States</li>
+            <li>Width: Up to 200 km (120 miles)</li>
+            <li>Depth: Up to 7 km (4.3 miles) - much deeper than Earth's Grand Canyon</li>
+            <li>Location: Along the Martian equator</li>
+            <li>Age: Estimated to have formed 3.5 billion years ago</li>
+            <li>Named after: Mariner 9 spacecraft, which discovered it in 1971</li>
+          </ul>
+        </div>
+        
+        <div class="feature-facts">
+          <h2>Comparison with Earth's Grand Canyon</h2>
+          <div class="comparison">
+            <div class="comparison-item">
+              <p>Valles Marineris</p>
+              <p class="comparison-value">4,000 km long</p>
+              <p class="comparison-value">7 km deep</p>
+            </div>
+            <div class="comparison-item">
+              <p>Grand Canyon (Earth)</p>
+              <p class="comparison-value">446 km long</p>
+              <p class="comparison-value">1.6 km deep</p>
+            </div>
+          </div>
+        </div>
+        
+        <h2>Formation and Structure</h2>
+        <p>
+          Unlike Earth's Grand Canyon, which was carved by water erosion, Valles Marineris is believed to have formed primarily through tectonic processes. As the Tharsis region bulged upward due to volcanic activity, the crust stretched and fractured, creating the vast canyon system.
+        </p>
+        
+        <p>
+          The canyon consists of several interconnected troughs, including:
+        </p>
+        
+        <div class="image-gallery">
+          <div>
+            <img src="images/melas-chasma.jpg" alt="Melas Chasma" class="gallery-img">
+            <p><strong>Melas Chasma</strong> - One of the deepest sections</p>
+          </div>
+          <div>
+            <img src="images/candor-chasma.jpg" alt="Candor Chasma" class="gallery-img">
+            <p><strong>Candor Chasma</strong> - Contains layered deposits</p>
+          </div>
+        </div>
+        
+        <h2>Evidence of Water</h2>
+        <p>
+          While tectonic activity created the canyon, there is evidence that water played a role in shaping parts of it. Scientists have found minerals that typically form in the presence of water, as well as features that resemble dried-up river channels and lake beds.
+        </p>
+        
+        <p>
+          Some researchers believe that Valles Marineris may have once contained lakes or even flowing rivers during Mars' warmer, wetter past. This makes it an important area for studying Mars' geological history and the potential for past life.
+        </p>
+        
+        <a href="https://en.wikipedia.org/wiki/Valles_Marineris" target="_blank" class="external-link">
+          Learn More about Valles Marineris <i class="fas fa-external-link-alt"></i>
+        </a>
+        
+        <div style="margin: 2rem 0;">
+          <a href="terrain.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Mars Terrain
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

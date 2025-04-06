@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olympus Mons - Mars Exploration</title>
+  <meta name="description" content="Learn about Olympus Mons, the largest volcano in the solar system">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    .info-box {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px;
+      border-radius: var(--radius);
+      display: none;
+      font-size: 14px;
+      max-width: 200px;
+      z-index: 10;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .hotspot:hover {
+      transform: scale(1.2);
+    }
+    .hotspot:hover + .info-box {
+      display: block;
+    }
+    .olympus-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius);
+    }
+    .olympus-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .olympus-facts {
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      transition: background-color 0.3s ease;
+    }
+    .external-link:hover {
+      background-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="olympus-content">
+        <h1>Olympus Mons</h1>
+        <p>The largest volcano in the solar system, located on Mars</p>
+        
+        <div class="image-container">
+          <img src="images/olympus-mons.jpg" alt="Olympus Mons" class="olympus-img">
+          
+          <!-- Hotspots for hover info -->
+          <div class="hotspot" style="top: 80px; left: 287px;"></div>
+          <div class="info-box" style="top: 100px; left: 300px;">Caldera formed by collapsed lava chambers.</div>
+          
+          <div class="hotspot" style="top: 150px; left: 260px;"></div>
+          <div class="info-box" style="top: 170px; left: 280px;">Summit of Olympus Mons, the highest volcano in the Solar System.</div>
+        </div>
+        
+        <div class="olympus-facts">
+          <h2>Key Facts</h2>
+          <ul>
+            <li>Height: 22 km (13.6 miles) - about 2.5 times the height of Mount Everest</li>
+            <li>Diameter: 600 km (372 miles) - roughly the size of France</li>
+            <li>Base circumference: approximately 2,000 km (1,240 miles)</li>
+            <li>Volume: about 100 times larger than Mauna Loa, Earth's largest volcano</li>
+            <li>Age: Estimated to be about 200 million years old</li>
+            <li>Last eruption: Estimated between 2-25 million years ago</li>
+          </ul>
+        </div>
+        
+        <p>
+          Olympus Mons is a shield volcano formed by many layers of fluid lava flows. Its size is possible because Mars lacks tectonic plates, allowing the volcano to remain fixed over a hotspot and grow to enormous proportions.
+        </p>
+        
+        <a href="https://en.wikipedia.org/wiki/Olympus_Mons" target="_blank" class="external-link">
+          Learn More about Olympus Mons <i class="fas fa-external-link-alt"></i>
+        </a>
+        
+        <div style="margin: 2rem 0;">
+          <a href="terrain.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Mars Terrain
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

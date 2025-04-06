@@ -1,0 +1,62 @@
+<div id="" class=" hds-module wp-block-smd-block-iframe-embed nasa-block-align-wide"><div class="SmdBlockIframeEmbedBlock hds-media margin-y-3" data-ratio="auto" data-manual-height="700" data-id="smd-iframe-0bbf91b9-4aa6-4280-b399-70ac7fe21ac8"><div id="smd-block-wrapper-smd-iframe-0bbf91b9-4aa6-4280-b399-70ac7fe21ac8" class="smd-block-wrapper margin-left-auto margin-right-auto margin-bottom-1 nasa-block-align-wide"><div class="smd-block-wrapper-inner margin-left-auto margin-right-auto" style="width: 100%; height: 80svh; position: relative; overflow: hidden;"><figure><iframe id="smd-iframe-smd-iframe-0bbf91b9-4aa6-4280-b399-70ac7fe21ac8" src="https://mars.nasa.gov/gltf_embed/25043?fs=true" title="" class="smd-iframe-iframe border-0" style="width: 100%; height: 100%;" loading="lazy" allow="fullscreen">Unable to render the provided source</iframe></figure></div></div></div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .back-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition */
+    position: relative; /* For pseudo-element */
+    overflow: hidden; /* Clip the pseudo-element */
+}
+
+.back-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)); /* Shine effect */
+    transform: skewX(-45deg);
+    transition: left 0.5s ease;
+}
+
+.back-button:hover::before {
+    left: 150%; /* Move the shine across the button */
+}
+
+.back-button:hover {
+    background-color: white;
+    color: black;
+    border-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.back-button:active { /* Optional: Add active state */
+    transform: translateY(2px); /* Slightly move down on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+  </style>
+</head>
+<body>
+  <div style="margin-left: 750px; margin-top: 40px;"> 
+  <button class="back-button" onclick="goBack()">Back</button> </div>
+
+<script>s
+function goBack() {
+  // Add your back navigation logic here (e.g., window.history.back())
+  window.location.href = "ingenuityrover.html";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Colonization Initiative</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #e4002b;
+            --secondary-color: #c7522a;
+            --dark-color: #272727;
+            --light-color: #f4f4f4;
+            --accent-color: #0b3d91;
+            --text-color: #333;
+            --background-color: #fff;
+            --alt-background: #f9f5f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: var(--dark-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .main-nav .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav .nav-links li {
+            margin-left: 25px;
+        }
+
+        .main-nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-nav .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-toggle span.active:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle span.active:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle span.active:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url(images/mars\ bc.jpg);
+            background-size: cover;
+            background-position: center;    
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+            background-color: black;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .alt-background {
+            background-color: var(--alt-background);
+        }
+
+        .two-column {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .column p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .feature-image {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+        .shining-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(90deg, #0a0831, #29184f, #550299, #092753, #4c013b);
+  background-size: 300% 100%;
+  animation: shine 3s infinite linear;
+  border-radius: 10px;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+        /* Card Styles */
+        .card-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 20px 20px 10px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            padding: 0 20px 20px;
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px;
+            background-color: rgb(180, 173, 173);
+            border: none;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header:hover {
+            background-color: #666262;
+        }
+
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .content-image {
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 120px;
+            width: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-date {
+            width: 100px;
+            padding-right: 20px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 40px;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: 116px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background-color: var(--dark-color);
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        .cta-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.primary:hover {
+            background-color: #c10023;
+        }
+
+        .cta-button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #c10023;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .two-column {
+                flex-direction: column;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .main-nav .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--dark-color);
+                padding: 20px 0;
+            }
+            
+            .main-nav .nav-links.active {
+                display: flex;
+            }
+            
+            .main-nav .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .content-section h2 {
+                font-size: 2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-date {
+                width: 80px;
+            }
+            
+            .timeline-content::before {
+                left: 26px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                min-width: 100%;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                width: auto;
+                text-align: left;
+                padding-left: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content::before {
+                left: 16px;
+            }
+            
+            .timeline-content {
+                padding-left: 50px;
+            }
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #ff4500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background-color: #e63900;
+        }
+        .accordion-content {
+    max-height: 0; /* Hidden by default */
+    overflow-y: hidden; /* No scrolling initially */
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+    padding: 0 10px; /* Remove padding when closed */
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px; /* Set a scrollable height when opened */
+    overflow-y: auto; /* Enable scrolling */
+    padding: 10px; /* Add padding when opened */
+}
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>MARS INITIATIVE</h1>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#habitats">Habitats</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="Rovers_Gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Colonizing the Red Planet</h1>
+            <p>Humanity's next giant leap</p>
+        </div>
+    </section>
+
+    <main>
+        
+        <section id="mission" class="content-section" style="color: white; background-image:url(images/new\ bc.jpg);" >
+            
+            <div class="container">
+                <h2 style="color: white;">The Mars Mission</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <p class="shining-text">The Mars Colonization Initiative represents humanity's boldest venture yet—establishing a permanent human presence on the Red Planet. Our mission is to create self-sustaining colonies that will serve as a second home for humanity and a base for further exploration of our solar system.</p>
+                        <p class="shining-text">With advances in propulsion technology, life support systems, and habitat construction, what once seemed like science fiction is now within our grasp.</p>
+                    </div>
+                    <div class="column">
+                        <div class="image-container">
+                            <img src="images/mission mars.jpg" alt="Mars colony concept art" class="feature-image">
+                            <p class="image-caption">It's not a dream anymore ,It's a well caluculated plan. </p>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="container">
+                <h2 style="color: white;">SPIRIT AND Opportunity</h2>
+                <div class="two-column">
+                    <div class="column" class="shining-text">
+                        <p class="shining-text">Spirit and Opportunity, the twin Mars Exploration Rovers (MER) launched by NASA in 2003. They were designed to explore the Martian surface and provide critical data about the planet’s geology and past water activity.</p>
+                        <h4 class="shining-text">Mission Goals:</h4> <br>
+                        <p class="shining-text">The rovers aimed to study the history of climate and water on Mars, searching for sites where conditions might have once been favorable for life. </p>
+                    </div>
+                    <div class="column">
+                        <div class="image-container">
+                            <img src="images/spirit and oppurtunity.webp" alt="Mars colony concept art" class="feature-image">
+                            <p class="image-caption">The Twin Explorer's</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="button" onclick="navigate()" >Check out the Anotomy of the Twin Rovers</button>
+            </div>
+
+        </section>
+        
+
+    <script>
+        function navigate() {
+            window.location.href = "Anotomy.html"; // Change to your desired page
+        }
+    </script>
+
+        <section id="habitats" class="content-section alt-background" style="background-color: rgb(240, 224, 202); background-image:url(images/new\ bc.jpg);">
+            <div class="container">
+                <h2 style="color: rgb(255, 255, 255);">Habitat Designs</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="images/habitat1.webp" alt="Surface habitats">
+                        <h3 style="color: white;">Surface Habitats</h3>
+                        <p>Pressurized modules designed to withstand Mars' harsh environment while providing comfortable living spaces for colonists.</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/habitat2.webp" alt="Underground complexes">
+                        <h3 style="color: white;">Underground Complexes</h3>
+                        <p>Subterranean facilities that utilize natural radiation shielding and stable temperatures of Martian caves and lava tubes.</p>
+                    </div>
+                    <div class="card">
+                        <img src="images/habitat3.webp" alt="Terraforming projects">
+                        <h3 style="color: white;">Terraforming Projects</h3>
+                        <p>Long-term initiatives to gradually transform the Martian atmosphere and surface to be more Earth-like and habitable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="content-section" style="background-image: url(images/new\ bc.jpg);color: rgb(169, 83, 255);">
+            <div class="container">
+                <h2>Ongoing Research</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Resource Utilization <span class="icon">+</span></button>
+                        <div class="accordion-content">
+                            <div class="info-container">
+                                <h2>Resource Utilization of Spirit & Opportunity Rovers</h2>
+                                <p>The Spirit and Opportunity rovers, part of NASA's Mars Exploration Rover (MER) program, were designed to explore Mars 
+                                   and search for evidence of past water activity. Each rover utilized solar power, radioisotope heaters, and onboard 
+                                   instruments to conduct scientific research and survive the Martian environment.</p>
+                        
+                                <div class="info-section">
+                                    <h3>Power</h3>
+                                    <ul class="info-list">
+                                        <li><strong>Solar Panels:</strong> Both rovers relied on solar panels to generate electricity, with cleaning events (dust removal by wind) helping to maintain power output.</li>
+                                        <li><strong>Radioisotope Heater Units (RHUs):</strong> To survive the cold Martian nights, each rover used eight RHUs, which generated thermal energy from the decay of radioisotopes, along with electrical heaters that operated when necessary.</li>
+                                        <li><strong>Power Output:</strong> The rovers' power supplies varied depending on dust coverage, ranging from 300 to 900 watt-hours per day, with dips during global dust storms.</li>
+                                    </ul>
+                                </div>
+                        
+                                <div class="info-section">
+                                    <h3>Instruments</h3>
+                                    <ul class="info-list">
+                                        <li><strong>Panoramic Camera:</strong> Allowed for wide-angle views of the Martian landscape.</li>
+                                        <li><strong>Microscopic Imager:</strong> Enabled close-up imaging of rocks and soil.</li>
+                                        <li><strong>Engineering Cameras:</strong> Provided detailed views of the rover's surroundings and assisted with navigation.</li>
+                                        <li><strong>Spectrometers:</strong> Analyzed the chemical composition of rocks and soil.</li>
+                                        <li><strong>Rock Abrasion Tool:</strong> Used to expose fresh rock surfaces for analysis.</li>
+                                        <li><strong>Magnet Array:</strong> Used to study the magnetic properties of rocks and soil.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <img src="images/utilization.avif" alt="Resource extraction diagram" class="content-image">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Water history <span class="icon">+</span></button>
+                        <div class="accordion-content">
+                            <p>Spirit and Opportunity were tasked with uncovering evidence of past water activity on Mars. Their discoveries provided strong indications that Mars once had liquid water on its surface.</p>
+                            <ul class="info-list">
+                                <li><strong>Evidence of Past Water:</strong> The rovers found rocks that appeared to have been laid down at the shoreline of an ancient salty body of water.</li>
+                                <li><strong>Sedimentary Rocks:</strong> Opportunity discovered layers of sedimentary rock, which likely formed from deposits in water.</li>
+                                <li><strong>Mineral Analysis:</strong> The rovers analyzed minerals like hematite, a mineral that typically forms in the presence of water.</li>
+                                <li><strong>Geological Processes:</strong> The rovers studied Mars' geological history, revealing processes that shaped its now-arid landscape and hinting at a wetter past.</li>
+                            </ul>
+
+                            
+                            
+                            <img src="images/arg.jpeg" alt="Mars agriculture system" class="content-image">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Past Environment<span class="icon">+</span></button>
+                        <div class="accordion-content">
+                            <p>
+                                Searching for Clues to Mars' Past Environment:<br>
+By studying the Martian surface, the rovers aimed to gather evidence about the planet's past climate and environment, including the presence of ancient lakes or oceans. 
+                            </p>
+                            
+                            <img src="images/glg.webp" alt="Medical research facility" class="content-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="content-section alt-background" style="background-color: rgb(240, 224, 202); background-image: url(images/new\ bc.jpg);">
+            <div class="container">
+                <h2 style="color: rgb(255, 255, 255);">Mission Timeline</h2>
+                <div class="timeline" style="color: #f4f4f4;">
+                    <div class="timeline-item" >
+                        <div class="timeline-date">2003</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br> - 7th July Launch</li>
+                                <li>Spirit :- <br> - 10th June Launch</li>
+                            </ul>
+                            <h3></h3>
+                            
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2004</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :-<br>- 25th January Landing<br>- 30th March Bounce Rock <br>- 4th May Endurance <br>- 30th December Heatshield/Heatsheild Rock</li>
+                                <li>Spirit :- <br> - 4th January Landing <br>- 11th March Bonneville <br>- 23th June Pot of Gold <br>- 31th August Clovis</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2005</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br> - 26th April - 10th June Purgatory Dune <br>- 2nd November Erebus </li>
+                                <li>Spirit :-  <br>- 7th March Larrys Lookout <br>- 6th september Top of Husband hill</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2006</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 29th September Arrival Victoria Crater</li>
+                                <li>Spirit :- <br>- 5th January Comanche <br>- 10th february Arrival at home Plate <br>- 22nd march Tyrone <br>- 14th April Low Ridge haven</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2007</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 1st January Santa catarina <br>- 6th february Odometer at 10km <br>- Sand Strom (Mid july-End of August) </li>
+                                <li>Spirit :- <br>- 1st May Gertude Weise <br>-  Sand Strom (Mid july-End of August)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2008</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 19th June Cape Verde <br>- 24th August Exit Victoria <br>- 17th October Adieu Victoria<br>- 28th November Santorini </li>
+                                <li>Spirit :- <br>- 25th December Winter Haven <br>- 30th December</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2009</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 12th May  Kasos <br>- 19th July  Block Island  <br>- 2th October  Shelter Island  <br>- 12th November  Marquette Island </li>
+                                <li>Spirit :- <br>- 29th April Sandtrapped at Troy </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2010</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 28th January Concepción <br>- 24th March Odometer at 20 km <br>- 19th May Breaking longevity record of Viking 1 <br>- 16th December Santa Maria </li>
+                                <li>Spirit :- <br>- 22nd March Communications hiatus </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2011</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 17th March Departure from Santa Maria <br>- 2nd June Odometer at 30 km <br>- 10th August Arrival Endeavour Crater at Cape York <br>- 9th November Homestake</li>
+                                <li>Spirit :- <br>- 25th May End of Mission </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2012</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 3rd January - 8th May Greeley Haven and radio Doppler campaign <br>- 6th September Kirkwood - "Newberries" <br>- 3rd October Whitewater Lake, Matijevic Hill </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2013</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 13th February Big Nickel <br>- 8th May Esperance <br>- 16th May Departure Cape York <br>- 1st August Base of Solander Point <br>- 31st October Yellow-Bellied Glider <br>- 19th November Moreton Island  </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2014</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 9th January Pinnacle Island <br>- 25th January 10th Landing Anniversary <br>- 20th July Odometer at 40 km <br>- 14th August Wdowiak Ridge <br>- 21st September Ulysses Crater <br>- 19th October Comet "Siding Spring"  </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 8th January Summit of Cape Tribulation <br>- 21st March Spirit of St. Louis Crater <br>- 15th July Marathon Valley </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2016</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 2nd February Knudsen Ridge <br>- 3rd September Leaving Marathon Valley <br>- 1st November Spirit Mound </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 22nd February Rocheport <br>- 23rd May Perseverance Valley <br>- 26th August Odometer at 45 km  </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018</div>
+                        <div class="timeline-content">
+                            <h3></h3>
+                            <ul>
+                                <li>Opportunity :- <br>- 10th March Aguas Calientes <br>- 10th June Last communication <br>- Dust storm from June to August <br>- Communication efforts </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="content-section cta-section" style="background-image: url(images/new\ bc.jpg);">
+            <div class="container">
+                <h2>Join The Mars Initiative</h2>
+                <p class="cta-text">The journey to Mars will require the brightest minds and most dedicated individuals. Whether you're a scientist, engineer, physician, or have other valuable skills, there may be a place for you in humanity's greatest adventure.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button primary" id="openModal">Apply to the Program</button>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Mars Colonist Application</h2>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="specialty">Specialty</label>
+                    <select id="specialty" name="specialty" required>
+                        <option value="">Select your field</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="medicine">Medicine</option>
+                        <option value="agriculture">Agriculture</option>
+                        <option value="research">Scientific Research</option>
+                        <option value="operations">Operations</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Why do you want to join the Mars mission?</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Animate hamburger to X
+                const spans = menuToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.toggle('active'));
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for header height
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.icon');
+                
+                // Toggle active class
+                content.classList.toggle('active');
+                
+                // Change plus/minus icon
+                if (content.classList.contains('active')) {
+                    icon.textContent = '−';
+                } else {
+                    icon.textContent = '+';
+                }
+                
+                // Close other accordion items
+                accordionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header) {
+                        const otherContent = otherHeader.nextElementSibling;
+                        const otherIcon = otherHeader.querySelector('.icon');
+                        
+                        otherContent.classList.remove('active');
+                        if (otherIcon) otherIcon.textContent = '+';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('applicationModal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const applicationForm = document.getElementById('applicationForm');
+
+        if (openModalBtn && modal) {
+            openModalBtn.addEventListener('click', () => {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            });
+        }
+
+        if (closeModalBtn && modal) {
+            closeModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            });
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Form submission
+        if (applicationForm) {
+            applicationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(applicationForm);
+                const formValues = Object.fromEntries(formData.entries());
+                
+                // In a real application, you would send this data to a server
+                console.log('Form submitted:', formValues);
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.className = 'success-message';
+                successMessage.textContent = 'Thank you for your application! We will contact you soon.';
+                successMessage.style.color = 'green';
+                successMessage.style.padding = '15px';
+                successMessage.style.marginTop = '15px';
+                successMessage.style.backgroundColor = '#e8f5e9';
+                successMessage.style.borderRadius = '4px';
+                
+                applicationForm.reset();
+                applicationForm.appendChild(successMessage);
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    successMessage.remove();
+                }, 5000);
+            });
+        }
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const scrollPosition = window.pageYOffset;
+                hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+            }
+        });
+
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card, .timeline-item, .accordion-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate');
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial styles for animation
+        document.querySelectorAll('.card, .timeline-item, .accordion-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        // Run animation on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        // Run once on page load
+        window.addEventListener('load', animateOnScroll);
+        
+
+
+        document.querySelectorAll(".accordion-header").forEach(button => {
+    button.addEventListener("click", function () {
+        const accordionItem = this.parentElement;
+
+        // Toggle active class
+        accordionItem.classList.toggle("active");
+
+        // Close other accordions
+        document.querySelectorAll(".accordion-item").forEach(item => {
+            if (item !== accordionItem) {
+                item.classList.remove("active");
+            }
+        });
+    });
+});
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Exploration - Educational Website</title>
+  <meta name="description" content="Learn about Mars rovers, terrain, and more">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="Challenges.html">Challenges</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Explore Mars</h1>
+        <p>
+          Discover the Red Planet through our educational resources about rovers, terrain, and more.
+        </p>
+        <div class="btn-group">
+          <a href="rovers.html" class="btn btn-primary">Explore Rovers</a>
+          <a href="terrain.html" class="btn btn-outline">Mars Terrain</a>
+        </div>
+      </section>
+      
+      <!-- Featured Sections -->
+      <section>
+        <h2 class="text-center">Featured Sections</h2>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <div class="card-content">
+              <h3>Mars Rovers</h3>
+              <p>Learn about the various rovers that have explored the Martian surface.</p>
+              <a href="rovers.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Martian Terrain</h3>
+              <p>Discover the fascinating landscape of Mars, including its active volcanoes.</p>
+              <a href="terrain.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-content">
+            <h3>Missions on Mars</h3>
+              <p>Explore the astounding missions and learn.</p>
+              <a href="marsmissions.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Methane on Mars</h3>
+              <p>Take our interactive quiz to test what you've learned about Mars.</p>
+              <a href="methaneonmars.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Water on Mars</h3>
+              <p></p>
+              <a href="watergasmars.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Challenges</h3>
+              <p>Explore the hurdles and obstacles</p>
+              <a href="Challenges.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+            <h3>Contributions</h3>
+              <p>Find the contributions of the rovers here</p>
+              <a href="Contribution_rover.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Fun and learning</h2>
+        <div class="grid grid-cols-3">
+          <div class="card">
+            <div class="card-content">
+              <h3>Comic Quest</h3>
+              <p>Learn about the various rovers that have explored the Martian surface.</p>
+              <a href="comicsection - Copy.html" class="text-gray-300 hover:text-white">
+                Learn more →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Test Your Knowledge</h3>
+              <p>Take our interactive quiz to test what you've learned about Mars.</p>
+              <a href="quiz.html" class="text-gray-300 hover:text-white">
+                Start quiz →
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <h3>Unlock your potential</h3>
+              <p>Take your knowledge all the way ahead.Register for exciting workshops!</p>
+              <a href="unlockpotential.html" class="text-gray-300 hover:text-white">
+                Register now →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      <!-- Why Mars Matters -->
+      <section class="text-center">
+        <h2>Why Mars Matters</h2>
+        <p class="max-w-3xl mx-auto">
+          Mars has been a subject of human fascination for centuries. Today, it's at the forefront of space exploration, 
+          offering insights into planetary evolution and the potential for human colonization.
+        </p>
+        <div class="relative">
+          <img src="images/mars-landscape.jpg" alt="Mars landscape" class="terrain-img">
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Page</title>
+   
+    <style>
+        h3
+        {
+            font-weight: bold; 
+            font-size: 26px; 
+            margin-bottom: 8px;
+        }
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url(images/hey.jpeg);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #fff;
+            padding-top: 30px;
+            font-weight: bold;
+        }
+
+        .comic-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 50px 0;
+            padding-bottom: 200px;
+        }
+
+        /* Flexbox for comic image and text layout */
+        .comic {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .comic img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .comic img:hover {
+            transform: scale(1.05);
+        }
+
+        .comic-text {
+            font-size: 1.2rem;
+            color: #bbb;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            max-width: 600px;
+        }
+
+        .comic-text:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #fff;
+            margin: 50px 0;
+            opacity: 0.2;
+        }
+
+        /* Alternating layout using flexbox */
+        .comic:nth-child(odd) {
+            flex-direction: row; /* Image on the left and text on the right */
+        }
+
+        .comic:nth-child(even) {
+            flex-direction: row-reverse; /* Image on the right and text on the left */
+        }
+
+        .comic > div {
+            flex: 1;
+            padding: 10px;
+        }
+
+        /* Fade in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design for small screens */
+        @media screen and (max-width: 768px) {
+            .comic {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .comic img {
+                max-width: 90%;
+            }
+
+            .comic-text {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+            html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+        background-color: black;
+    }
+
+    #stars-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Push behind all content */
+        display: block;
+    }
+
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas" class="stars-container"></canvas>
+      <main>
+            <div class="container">         
+                            <h1 style="font-size: 35px;">Comic Showcase</h1>
+                            <section style="color: white; padding: 20px; font-family: Arial, sans-serif;">
+                                <p style="font-size: 18px; line-height: 1.6;">
+                                    Comics have long been a source of entertainment and education, and their impact is especially profound when it comes to topics like space exploration. In the context of Mars and NASA's missions, comics offer a unique way to engage people of all ages, making complex subjects like space travel, science, and technology accessible and fun.
+                                </p>
+                                <p style="font-size: 18px; line-height: 1.6;">
+                                    With NASA's ongoing efforts to explore Mars, comics can simplify and visualize the vastness of space. Through captivating illustrations and creative storytelling, comics can bring to life the challenges astronauts face, the excitement of new discoveries, and the potential future of humanity living on Mars.
+                                </p>
+                                <p style="font-size: 18px; line-height: 1.6;">
+                                    By presenting space missions in a more approachable and engaging way, comics spark curiosity and inspire the next generation of explorers, scientists, and engineers. The colorful, imaginative nature of comics can help make the dream of traveling to Mars seem tangible and achievable, motivating young minds to pursue careers in STEM (Science, Technology, Engineering, and Math).
+                                </p>
+                                <p style="font-size: 18px; line-height: 1.6;">
+                                    Whether through a story about a Martian adventure or a comic explaining NASA's latest rover mission, comics hold the power to inspire and educate, making space exploration not just a subject of study, but an exciting journey to follow and imagine.
+                                </p>
+                            </section>
+                
+                            <div class="comic">
+                                <div>
+                                    <img src="images/comic111.jpg" alt="Mars rover comic" >
+                                </div>
+                                <div>
+                                    <h3>Rover's Report: No Aliens, Just Undocumented Noncitizens</h3>
+                                    <p class="comic-text">
+                                        This comic depicts a Mars rover reporting back to President Biden.
+                                        It humorously states that there are no “aliens,” only “undocumented noncitizens,” referencing immigration terminology.
+                                        The aliens are portrayed as friendly-looking creatures, making the term sound ironic.
+                                        The comic satirizes the use of politically correct language in immigration debates.
+                                        It highlights the absurdity of applying human immigration terms to extraterrestrial beings.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic2.webp" alt="Comic 2">
+                        </div>
+                        <div>
+                            <h3>Martian Migrants: A Satirical Look at Immigration Terminology</h3>
+                            <p class="comic-text">This comic depicts a Mars rover reporting back to President Biden.
+                            It humorously states that there are no “aliens,” only “undocumented noncitizens,” referencing immigration terminology.
+                                    The aliens are portrayed as friendly-looking creatures, making the term sound ironic.
+                                    The comic satirizes the use of politically correct language in immigration debates.
+                                    It highlights the absurdity of applying human immigration terms to extraterrestrial beings.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic3.jpg" alt="Comic 3">
+                        </div>
+                        <div>
+                            <h3>Rovers Gone Wild: A Humorous Take on Mars Exploration</h3>
+                            <p class="comic-text">This comic humorously reimagines the famous “Curiosity Rover” by depicting various alternative rovers with exaggerated characteristics. The “Generosity Rover” is shown offering gifts and drinks, emphasizing a friendly and giving nature. In contrast, the “Ferocity Rover” appears aggressive, armed with spikes and a club, as if prepared for battle. The “Monstrosity Rover” takes a bizarre turn, seemingly overtaken by a green, tentacled alien creature. Finally, the “Pomposity Rover” exudes an air of sophistication, complete with a top hat, monocle, and cane, embodying a refined and aristocratic demeanor.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic4.png" alt="Comic 4" style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>The Lonely Odyssey of a Mars Rover</h3>
+                            <p class="comic-text">This comic depicts the emotional journey of a Mars rover, initially designed for a 90-day mission but continuing far beyond its expected lifespan. As the days pass, the rover develops a human-like sense of hope and doubt, wondering if it did a good enough job to be allowed to return home. Despite its tireless efforts, it becomes stuck and eventually loses power, still longing for acknowledgment. The comic portrays the rover with touching innocence and dedication, making it relatable and melancholic. It symbolizes perseverance, loneliness, and the unsung sacrifice of machines in exploration.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic5.jpeg" alt="Comic 5" style="width: 400px; height: 400px;">
+                        </div>
+                        <div>
+                            <h3>A Small Robot's Big Heart: The Opportunity Rover's Legacy</h3>
+                            <p class="comic-text"></p>This comic portrays a touching and emotional moment inspired by the real-life Mars rover, Opportunity, which lost power due to a dust storm. The rover, covered in Martian dust, expresses exhaustion and drowsiness, symbolizing its final moments before shutting down. Despite feeling too tired to continue, it reassures itself that it is okay, showing a sense of acceptance. It then decides to “nap” until help arrives, though in reality, no rescue was possible. The final panel conveys hope, as if the rover believes in humanity’s future success in space exploration, making this a heartfelt farewell.
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic6.jpg" alt="Comic 6" style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>The Red Planet's Fury: A Dust Storm's Impact on Opportunity</h3>
+                            <p class="comic-text">This comic explains the effects of a massive dust storm on Mars, which engulfed the planet and left the Opportunity rover in a hibernation state. The thick dust blocked sunlight, preventing the rover’s solar panels from charging its batteries. Even after the storm cleared, a fine layer of dust might remain on the panels, delaying its recovery. Scientists hoped for a gust of wind to clear the dust, but such events are unpredictable. With no definite timeline for the storm to end, all they could do was wait, highlighting the challenges of operating a rover in Mars’ harsh environment.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic7.jpg" alt="Comic 7"  style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>The Red Planet's Resident Disappointment: A Rover's Tale</h3>
+                            <p class="comic-text">The comic portrays a Mars rover excitedly anticipating rescue as a spacecraft takes off. It prepares a “welcome” message using rocks, believing its return home is imminent. However, the spacecraft suddenly disappears with a “ploof,” leaving the rover confused and disheartened. The humor lies in the rover’s hopeful optimism being crushed by an unexpected twist, emphasizing its loneliness and abandonment on Mar</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic8.jpg" alt="Comic 8"  style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>Mars Landing: Where Heroes are Left Behind</h3>
+                            <p class="comic-text">The comic humorously depicts the different components of a Mars landing mission feeling abandoned after completing their roles. The heat shield, parachute, and descent stage express sadness as they are discarded, while the rover, now safely on Mars, feels guilty about their fate. It highlights the sacrifices of these expendable parts in space exploration, ending with a witty twist on the phrase “7 minutes of terror” as the rover laments its “lifetime of guilt.”</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic9.jpg" alt="Comic 9"  style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>The Bittersweet Farewell of Mars Lander Components</h3>
+                            <p class="comic-text">This comic humorously portrays the emotional “goodbyes” of different parts of a Mars lander system as they are discarded after fulfilling their purpose. The spacecraft components, including the heat shield, parachute, and descent stage, express sadness over being abandoned after successfully delivering the rover to the Martian surface. Each part acknowledges its role in the mission but laments its fate of becoming space junk or crashing. Meanwhile, the rover, feeling guilty, reflects on how it relied on all these components but now continues alone. The comic adds a humorous yet bittersweet perspective to space exploration, highlighting the sacrifices made for successful landings.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic10.jpg" alt="Comic 10"  style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>The Purr-fect Pun: Curiosity Kills the Cat</h3>
+                            <p class="comic-text">This comic strip is a humorous take on wordplay. It depicts a conversation between two NASA scientists discussing the discovery of a cat on Mars. However, the cat is reported to have died, leading one scientist to question what caused its death. The punchline comes when the other scientist dramatically states, "It seems… Curiosity!"—a reference to both the famous phrase "Curiosity killed the cat" and the Curiosity Rover on Mars. The final panel humorously shows the rover seemingly responsible for the cat's demise, reinforcing the pun.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic111.jpg" alt="Comic 11"  style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>Low on Power, But Not on Spirit: The Opportunity Rover’s Legacy</h3>
+                            <p class="comic-text">This image is a tribute to NASA’s Opportunity rover, which explored Mars for nearly 15 years. The phrase “My battery is low, and it’s getting dark” is widely believed to be its final message before it lost contact in 2018 due to a massive dust storm. Though not an official transmission, this poetic interpretation captured the emotions of space enthusiasts worldwide. Opportunity’s mission greatly advanced our understanding of Mars, discovering evidence of ancient water. Its legacy continues to inspire future space exploration.</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="comic">
+                        <div>
+                            <img src="images/comic12.jpg" alt="Comic 12" style="width: 500px; height: 500px;">
+                        </div>
+                        <div>
+                            <h3>A Smelly Situation: Mr. Skygack's Earthly Encounters</h3>
+                            <p class="comic-text">This comic strip, Mr. Skygack, from Mars, humorously depicts an alien visitor misunderstanding human technology. Mr. Skygack observes a man working on a broken automobile and describes it in a literal yet amusingly incorrect way. He refers to the car as a “wonderful talking machine” due to the frustrated man’s shouting, and he finds its smell unpleasant. The alien also notes that one of the wheels is “out of breath,” likely referring to a flat tire. The comic satirizes how an outsider might misinterpret everyday human activities, making for a clever and humorous perspective.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+           <center><a href="index.html"><button value="RETURN">RETURN</button></center>
+        </main>
+</body>
+</html>

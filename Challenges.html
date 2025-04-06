@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Exploration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: white;
+            text-align: center;
+            scroll-behavior: smooth;
+            background-image: url(images/new\ bc.jpg);
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            transition: background 0.3s, color 0.3s;
+            border-radius: 5px;
+        }
+        .header nav a:hover {
+            background: orange;
+            color: black;
+        }
+        .hero {
+            background: url('mars-hero.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 60px;
+        }
+        .section {
+            padding: 50px;
+            border-bottom: 1px solid gray;
+            margin-top: 20px;
+        }
+        .image-card, .video-card {
+    max-width: 850px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px white;
+}
+
+.image-card img, .video-card iframe {
+    width: 100%;
+    height: 400px; /* Adjust this value as needed */
+    object-fit: cover; /* Maintains aspect ratio and fills the area */
+}
+        .interactive-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+        .interactive-card {
+            width: 300px;
+            background: white;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px white;
+            transition: transform 0.3s;
+        }
+        .interactive-card:hover {
+            transform: scale(1.1);
+        }
+        .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #fff;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+      user-select: none;
+    }
+
+    .arrow.left {
+      left: 30px;
+    }
+
+    .arrow.right {
+      right: 30px;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Mars Exploration</h1>
+        <nav>
+            <a href="#topic1">Harsh Environment</a>
+            <a href="#topic2">Scarcity</a>
+            <a href="#topic3">Communication</a>
+            <a href="#topic4">Psychological hurdles</a>
+            <a href="#topic5">Mars Colonization</a>
+            <a href="index.html">BACK</a>
+        </nav>
+    </div>
+
+    <div class="hero">
+        <h1>Explore the Red Planet</h1>
+        <p>Discover the wonders of Mars and its legendary rovers</p>
+    </div>
+
+    <div id="topic1" class="section">
+        <h1>Harsh and Dangerous Environment on Mars</h1>
+        <div class="image-card"><img src="images/harsh.png" alt="Curiosity Rover" width="400" >
+            <p>
+              Mars presents a very hostile environment for human life. One of the biggest problems is its thin atmosphere,
+              which is made almost entirely of carbon dioxide. Unlike Earth, it doesn’t have enough oxygen for humans to breathe,
+              and offers no protection against harmful space radiation.
+            </p>
+            <p>
+              The planet is also extremely cold, with average temperatures around -60°C, and it can drop even lower during the night.
+              Without strong thermal protection, it would be impossible to survive outdoors.
+            </p>
+            <p>
+              Adding to these problems, massive dust storms are common on Mars. These storms can cover the entire planet and last for weeks or even months.
+              They block sunlight, damage equipment, and reduce the efficiency of solar panels, which are the main power source for most missions.
+            </p>
+            <p>
+              Even more dangerous is the radiation. Mars lacks a protective magnetic field and thick atmosphere like Earth,
+              so cosmic rays and solar radiation can directly reach the surface. Long-term exposure to this radiation can cause
+              cancer, organ damage, and weakened immunity. Building safe shelters that block this radiation is one of the biggest
+              challenges for long-term human survival on Mars.
+            </p></div>
+            <br>
+            <br>
+            <div class="video-card">
+              <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/WH4MChywx4o?si=ESWds7qbi7Vix4ZJ&autoplay=1&loop=1&playlist=WH4MChywx4o&mute=1" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>            
+    </div>
+    
+    <div id="topic2" class="section">
+        <h1>Scarcity of Water and Resources on Mars</h1>
+        <div class="image-card"><img src="images/harsh2.avif" alt="Perseverance Rover"><p>
+            Mars is a planet with extremely limited natural resources for human survival. One of the biggest challenges is the
+            <strong>lack of liquid water</strong>. There are no rivers, lakes, or rainfall on Mars. Water exists mostly as
+            <strong>ice beneath the surface</strong> or near the polar regions. Extracting this water is a complex task —
+            it requires <strong>advanced machinery</strong>, <strong>high energy</strong>, and time.
+          </p>
+          <p>
+            Water is essential not just for <strong>drinking</strong>, but also for <strong>growing food</strong>,
+            <strong>producing oxygen</strong>, and even creating <strong>rocket fuel</strong>. Without a reliable water source,
+            sustaining human life on Mars becomes extremely difficult.
+          </p>
+          <p>
+            In addition to water, Mars does not naturally offer other vital resources like <strong>food, breathable oxygen, or usable fuel</strong>.
+            This means that nearly everything required for survival — from <strong>food supplies</strong> to <strong>clothing and tools</strong> —
+            would have to be transported from Earth. This is expensive and impractical for long-term missions.
+          </p>
+          <p>
+            To overcome this, scientists are working on technologies for <strong>in-situ resource utilization (ISRU)</strong> —
+            a process of <strong>using local Martian materials</strong> to produce what we need. This includes making oxygen
+            from the CO₂ in the atmosphere, extracting water from ice, and even growing food in Martian soil. Mastering ISRU will be key
+            to building a sustainable colony on Mars.
+          </p></div>
+          <br>
+          <br>
+          <div class="video-card">
+            <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/UPOQD6Pz79k?si=ol315WU4JILuvpPN&autoplay=1&loop=1&playlist=UPOQD6Pz79k&mute=1" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          
+       
+    </div>
+
+    <div id="topic3" class="section">
+        <h2><h1>Communication Delays Between Earth and Mars</h1></h2>
+        <div class="image-card"><img src="images/harsh3.webp" alt="Spirit and Opportunity"><p>
+            One of the biggest challenges in managing a Mars mission is the <strong>delay in communication</strong> due to the large
+            distance between Earth and Mars. Depending on their positions in orbit, the <strong>distance ranges from 55 million km to over 400 million km</strong>.
+            As a result, <strong>radio signals can take between 13 to 24 minutes (one way)</strong> to travel between the two planets.
+          </p>
+          <p>This has major implications:</p>
+          <ul>
+            <li>We <strong>can’t have live conversations</strong> between Earth and Mars.</li>
+            <li>If something goes wrong, <strong>help from Earth would be delayed</strong>.</li>
+            <li>We <strong>can't remotely control Mars rovers or systems in real time</strong>.</li>
+          </ul>
+          <p>To deal with this, we need to use:</p>
+          <ul>
+            <li><strong>Autonomous AI systems</strong> that can make decisions without waiting for instructions from Earth.</li>
+            <li><strong>Pre-programmed procedures</strong> and emergency protocols for astronauts.</li>
+            <li><strong>Relay satellites</strong> around Mars to assist with consistent and strong communication signals.</li>
+          </ul></div>
+          <br>
+          <br>
+          <div class="video-card">
+            <iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/OL9cpxuN7NY?autoplay=1&loop=1&playlist=OL9cpxuN7NY&mute=1" 
+  frameborder="0" 
+  allow="autoplay; encrypted-media" 
+  allowfullscreen>
+</iframe>
+
+          </div>
+          
+    </div>
+
+    <div id="topic4" class="section">
+        <h1>Psychological Challenges of Living on Mars</h1>
+        <div class="image-card"><img src="images/harsh4.jpg" alt="Terraforming Mars"><p>
+            Life on Mars would not only be physically demanding, but also <strong>mentally and emotionally tough</strong>.
+            Astronauts would be isolated in a confined space with the same group of people for <strong>months or even years</strong>,
+            without access to nature, fresh air, or outdoor activities.
+          </p>
+          <p>
+            They will be living in a <strong>completely artificial environment</strong>, which can feel unnatural and claustrophobic over time.
+            There will be <strong>no fresh breeze, no real sunlight</strong> (only filtered artificial light), and <strong>no opportunity to go outside freely</strong>
+            without wearing a bulky spacesuit.
+          </p>
+        
+          <h2>Emotional and Mental Health Risks</h2>
+          <ul>
+            <li><strong>Stress and Anxiety</strong> from constant danger and technical challenges.</li>
+            <li><strong>Depression</strong> due to extreme isolation and unfamiliar surroundings.</li>
+            <li><strong>Loneliness</strong> from being away from loved ones and Earth.</li>
+            <li><strong>Sleep Issues</strong> caused by Mars’ slightly longer days (24.6 hours).</li>
+            <li><strong>Mental Fatigue</strong> from repetitive tasks and limited stimulation.</li>
+          </ul>
+        
+          <h2>Possible Solutions</h2>
+          <ul>
+            <li>Use of <strong>virtual reality and entertainment</strong> to simulate Earth-like experiences.</li>
+            <li>Designing habitats with <strong>private areas and leisure activities</strong>.</li>
+            <li>Maintaining <strong>regular communication with loved ones</strong>, even with delays.</li>
+            <li>Providing <strong>psychological training and mental health support</strong> throughout the mission.</li>
+          </ul></div>
+          <br>
+          <br>
+          <div class="video-card">
+            <iframe width="560" height="315" 
+              src="https://www.youtube.com/embed/OL9cpxuN7NY?si=qgP8kJoV0gKsql3y&autoplay=1&loop=1&playlist=OL9cpxuN7NY&mute=1" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          
+    </div>
+
+    <div id="topic5" class="section">
+        <h2>Mars Colonization</h2>
+        <br>
+          <br>
+        <div class="image-card"><img src="images/praneethdomes.jpg" alt="Mars Colonization"><h1>Habitat Domes on Mars</h1>
+            <p>
+              To survive on Mars, humans will live inside specially designed shelters known as <strong>habitat domes</strong>.
+              These will protect people from Mars’ harsh environment and help them live safely.
+            </p>
+            <ul>
+              <li><strong>Sealed and Pressurized:</strong> Domes will keep in oxygen and maintain breathable air pressure.</li>
+              <li><strong>Temperature and Oxygen Control:</strong> Systems inside the dome will manage heat and oxygen levels.</li>
+              <li><strong>Radiation Protection:</strong> Domes may be built underground or covered with Martian soil to block harmful radiation.</li>
+            </ul></div>
+            <br>
+          <br>
+        <div class="image-card"><img src="images/praneethchart.png" alt="Mars Colonization"><h1>Life Support Systems on Mars</h1>
+            <p>
+              Humans need essential life support systems to survive on Mars, including oxygen, water, and food. Since Mars does not provide these directly,
+              we must produce them using advanced technologies.
+            </p>
+          
+            <h2>Oxygen Production</h2>
+            <ul>
+              <li>Mars’ atmosphere is 95% CO₂.</li>
+              <li>NASA’s MOXIE experiment shows it’s possible to convert CO₂ into breathable oxygen.</li>
+              <li>Future systems will scale this up for continuous oxygen supply.</li>
+            </ul>
+          
+            <h2>Water Supply</h2>
+            <ul>
+              <li>Water can be extracted by melting ice beneath the Martian surface.</li>
+              <li>Recycling water waste is also critical, similar to systems used on the ISS.</li>
+            </ul>
+          
+            <h2>Food Production</h2>
+            <ul>
+              <li>Food could be grown in greenhouses with artificial light and temperature control.</li>
+              <li>Techniques like hydroponics and aeroponics allow plant growth without soil.</li>
+              <li>This will reduce the need to send food from Earth and support long-term living.</li>
+            </ul>
+          </div>
+          <br>
+          <br>
+        <div class="image-card"><img src="images/hbd6.jpg" alt="Mars Colonization"><h1>Energy Sources on Mars</h1>
+            <p>
+              Mars colonies will require stable and reliable energy sources to power life support, communications, heating, and more.
+              Two main energy solutions are being considered: solar and nuclear.
+            </p>
+          
+            <h2>Solar Energy</h2>
+            <ul>
+              <li>Solar panels will provide clean energy during daylight hours.</li>
+              <li>Mars receives less sunlight than Earth, so panels must be large and efficient.</li>
+              <li>Dust storms can block sunlight and reduce power generation for weeks.</li>
+              <li>Energy storage (like batteries) is needed for backup during night and storms.</li>
+            </ul>
+          
+            <h2>Nuclear Energy</h2>
+            <ul>
+              <li>Nuclear reactors can deliver consistent, 24/7 power regardless of weather.</li>
+              <li>They are especially useful during long nights or when sunlight is not available.</li>
+              <li>NASA is testing small, portable nuclear systems for future Mars missions.</li>
+            </ul></div>
+            <br>
+          <br>
+        <div class="image-card"><img src="images/praneethspacesuits.jpg" alt="Mars Colonization"><h1>Transportation and Space Suits on Mars</h1>
+            <p>
+              Moving around and working outside will require special tools and vehicles to keep astronauts safe from Mars’ hostile environment.
+            </p>
+          
+            <h2>Mars Rovers</h2>
+            <ul>
+              <li>Pressurized rovers will let astronauts explore Mars while staying protected.</li>
+              <li>They’ll include oxygen systems, heaters, and navigation tools.</li>
+              <li>Equipped with airlocks for easy access during outdoor missions.</li>
+            </ul>
+          
+            <h2>Space Suits</h2>
+            <ul>
+              <li>Space suits must be tough, lightweight, and flexible.</li>
+              <li>Protection from radiation, freezing temperatures, and Mars dust.</li>
+              <li>Designed for movement, touchscreen use, and long-duration tasks.</li>
+              <li>Built-in radios for communication with base and team.</li>
+            </ul></div>
+            <br>
+          <br>
+        <div class="image-card"><img src="images/praneethmars.jpg" alt="Mars Colonization"><h1>Terraforming Mars</h1>
+            <p>
+              Terraforming means changing the environment of Mars to make it more Earth-like — with breathable air, warmer temperatures, and possibly even rain.
+              This is a very long-term dream and not possible with current technology.
+            </p>
+          
+            <h2>What Terraforming Might Involve</h2>
+            <ul>
+              <li><strong>Warming the Planet:</strong> Using mirrors or gases to slowly raise the temperature.</li>
+              <li><strong>Creating a Thicker Atmosphere:</strong> Releasing gases to trap heat and protect against radiation.</li>
+              <li><strong>Producing Oxygen:</strong> Using plants or algae for photosynthesis to increase oxygen levels.</li>
+              <li><strong>Melting Ice:</strong> Creating lakes or rivers by melting polar ice.</li>
+            </ul>
+          
+            <h2>Challenges</h2>
+            <ul>
+              <li>Current technology is not advanced enough to terraform Mars.</li>
+              <li>The process would take hundreds to thousands of years.</li>
+              <li>Early colonies will depend on artificial habitats and life support systems.</li>
+            </ul></div>
+            <br>
+            <br>
+        <div class="video-card"><iframe width="560" height="315" src="https://www.youtube.com/embed/JuhLBsnyP8U?si=lwyG-VzD0KLNnRd_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        
+    </div>
+
+    <div class="interactive-section">
+        <div class="interactive-card" onclick="openPopup(0)">Martian Landscape</div>
+        
+      </div>
+      <br><br>
+    
+      <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <span class="arrow left" onclick="prevImage()">&#8592;</span>
+        <img id="popup-img" src="" alt="Popup Image">
+        <span class="arrow right" onclick="nextImage()">&#8594;</span>
+        
+      </div>
+    
+      <script>
+        const images = ['images/Martian.jpg', 'images/martian2.webp', 'images/martian3.jpg','images/martian4.jpg',];
+        let currentIndex = 0;
+    
+        function openPopup(index) {
+          currentIndex = index;
+          updateImage();
+          document.getElementById('popup').style.display = 'flex';
+        }
+    
+        function closePopup() {
+          document.getElementById('popup').style.display = 'none';
+        }
+    
+        function updateImage() {
+          document.getElementById('popup-img').src = images[currentIndex];
+        }
+    
+        function prevImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          updateImage();
+        }
+    
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateImage();
+        }
+    
+        // Optional: allow arrow key navigation
+        document.addEventListener('keydown', (e) => {
+          if (document.getElementById('popup').style.display === 'flex') {
+            if (e.key === 'ArrowRight') nextImage();
+            else if (e.key === 'ArrowLeft') prevImage();
+            else if (e.key === 'Escape') closePopup();
+          }
+        });
+
+      </script>
+</html>

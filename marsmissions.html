@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Missions</title>
+    <style>
+        .back-home-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: maroon;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adds a subtle shine */
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 120px;
+}
+.content {
+  padding: 50px;
+  text-align: center;
+}
+
+.back-home-button:hover {
+  background-color: darkred;
+}
+        .shaking-input {
+  animation: shake 2s ease-out 0s 2;
+}
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-image: url(images/hey.jpeg);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th {
+            font-size: 125%;
+            padding: 10px;
+            text-align: center;
+            color: maroon;
+            font-style: italic;
+        }
+        td {
+            font-size: 125%;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-style: italic;
+        }
+        .intro-text {
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .content-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .text-container {
+            width: 60%;
+            margin-right: 20px;
+        }
+        .image-container img {
+            width: 105%; /* You can adjust this size as needed */
+            border-radius: 10px; /* Optional: rounds the corners of the image */
+            height: 100%;
+        }
+        .search-input {
+            margin: 10px 0;
+            padding: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .expandable-row {
+            display: none;
+            background-color: #f9f9f9;
+        }
+        .search-input {
+    margin: 10px 350px;
+    padding: 10px; /* Adjust padding for height */
+    width: 50%; /* Adjust width as per your requirement (e.g., 50% of the parent container) */
+    font-size: 16px;
+    border-radius: 5px; /* Optional: rounded corners */
+    background-color: #333; /* Optional: background color */
+    color: white; /* Optional: text color */
+
+}
+.shining-text {
+  color: maroon;
+  background: linear-gradient(to right, #ff0000 8%, #ffffff 18%, #ff0000 33%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite forwards;
+  background-size: 200% auto;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <button class="back-home-button" onclick="goHome()" style="margin-right: 10px; margin-top: 3px; " >Back Home</button>
+
+<script>
+function goHome() {
+  window.location.href ="index.html";// Replace "/" with your home page URL
+}
+</script>
+    <audio autoplay loop>
+        <source src="C:\Users\reshm\Downloads\Interstellar-Theme (1).mp3" type="audio/mp3">
+    </audio>
+    <br>
+    <br>
+    <h1 style="color: maroon; font-style: italic;"><span class="shining-text">MARS MISSIONS</span></h1>
+    <div class="content-container">
+        <div class="intro-text" style="font-style: italic;">
+            NASA’s various Mars missions, ranging from rovers like Opportunity and Curiosity to orbiters like MAVEN <br> and Mars Reconnaissance Orbiter, are driven by a singular goal: to unravel the mysteries of the Red Planet.<br> These missions aim to understand Mars' history, its potential to support life, and the possibility of human <br>exploration in the future. By sending rovers to explore the surface, landers to study the planet's interior, and <br>orbiters to map its atmosphere, NASA seeks to gather crucial data on Mars' geology, climate, and habitability. <br>The Viking missions in the 1970s set the stage for these investigations by focusing on the search for life and <br>the study of Mars' soil and atmosphere. More recent missions, such as Perseverance, aim to investigate <br>ancient signs of life and collect samples that may one day be returned to Earth. Additionally, missions like the <br>Mars 2020 Orbiter support data relay systems to maintain communication with the Martian surface.<br> With the ultimate intention of answering whether Mars once hosted life and whether humans could one day <br>live there, NASA’s commitment to exploring Mars continues to push the boundaries of space exploration,<br> paving the way for future missions like the Mars Sample Return and human missions to the planet. <br>Through these missions, NASA is setting the foundation for humanity's next steps in the cosmos.
+        </div>
+        <div class="image-container">
+            <img src="images/nasaimage2.jpg" alt="Mars Image"> <!-- Replace with a valid image URL -->
+        </div>
+    </div>
+
+    <h2 style="color: maroon; font-style: italic; text-align: center;"><span class="shining-text">MARS MISSIONS OVERVIEW</span></h2>
+
+    <input type="text" id="search"  class="search-input" onkeyup="searchTable()" placeholder="Search for missions..."  height="20px" width="50px"/>
+
+    <table id="marsTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Mission Name</th>
+                <th onclick="sortTable(1)">Type</th>
+                <th onclick="sortTable(2)">Objectives</th>
+                <th onclick="sortTable(3)">Launch Date</th>
+                <th onclick="sortTable(4)">Landing Date</th>
+                <th onclick="sortTable(5)">Key Discoveries/Goals</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example mission data row -->
+            <tr>
+                <td style="color: maroon">Viking 1</td>
+                <td>Lander</td>
+                <td>Search for signs of life, map surface, and study atmosphere.</td>
+                <td>August 20, 1975</td>
+                <td>July 20, 1976</td>
+                <td>First successful landing on Mars; captured high-resolution images and soil samples.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Viking 2</td>
+                <td>Lander</td>
+                <td>Search for signs of life, study surface composition and atmosphere.</td>
+                <td>September 9, 1975</td>
+                <td>September 3, 1976</td>
+                <td>Studied Martian geology and atmosphere; found no evidence of life.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Opportunity</td>
+                <td>Rover</td>
+                <td>Examine Martian rocks, minerals, and soil; assess past water activity.</td>
+                <td>July 7, 2003</td>
+                <td>January 25, 2004</td>
+                <td>Found evidence of past water, discovered "Blueberries" (spherical mineral formations).</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Spirit</td>
+                <td>Rover</td>
+                <td>Examine Mars' surface for evidence of past water.</td>
+                <td>June 10, 2003</td>
+                <td>January 4, 2004</td>
+                <td>Discovered evidence of ancient volcanic activity, soil analysis revealed past water interaction.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Curiosity</td>
+                <td>Rover</td>
+                <td>Investigate Mars' climate, geology, and potential habitability.</td>
+                <td>November 26, 2011</td>
+                <td>August 6, 2012</td>
+                <td>Confirmed presence of ancient water, discovered organic molecules, and methane spikes.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Perseverance</td>
+                <td>Rover</td>
+                <td>Search for signs of ancient life, collect samples for future return missions, and test new technologies.</td>
+                <td>July 30, 2020</td>
+                <td>February 18, 2021</td>
+                <td>Exploring Jezero Crater, investigating ancient river delta, and testing the first helicopter on Mars (Ingenuity).</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">InSight</td>
+                <td>Lander</td>
+                <td>Study the interior of Mars, its seismic activity, and temperature.</td>
+                <td>May 5, 2018</td>
+                <td>November 26, 2018</td>
+                <td>Detected Marsquakes, studied heat flow, and analyzed the planet's internal structure.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Mars Express</td>
+                <td>Orbiter</td>
+                <td>Map Mars' surface, study its atmosphere and search for water ice.</td>
+                <td>June 2, 2003</td>
+                <td>N/A</td>
+                <td>Mapped Mars' surface in high detail, discovered water ice, and studied the atmosphere.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Mars Reconnaissance Orbiter (MRO)</td>
+                <td>Orbiter</td>
+                <td>Study Mars' atmosphere, surface, and climate.</td>
+                <td>August 12, 2005</td>
+                <td>N/A</td>
+                <td>Discovered signs of ancient water, mapped the surface, and provided detailed imagery of Mars.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Mars 2020 Orbiter</td>
+                <td>Orbiter</td>
+                <td>Support the Perseverance rover mission and relay communications.</td>
+                <td>July 30, 2020</td>
+                <td>N/A</td>
+                <td>Relays data between Earth and Perseverance, provides high-resolution imaging.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">MAVEN (Mars Atmosphere and Volatile Evolution)</td>
+                <td>Orbiter</td>
+                <td>Study Mars' upper atmosphere, ionosphere, and escape of atmospheric gases.</td>
+                <td>November 18, 2013</td>
+                <td>N/A</td>
+                <td>Mapped the Martian atmosphere and provided insights into its climate history and loss of atmosphere.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">ExoMars Trace Gas Orbiter (TGO)</td>
+                <td>Orbiter</td>
+                <td>Study Mars' atmosphere, search for traces of methane, and investigate potential life.</td>
+                <td>March 14, 2016</td>
+                <td>N/A</td>
+                <td>Analyzed methane levels, provided data for future missions, and studied the surface of Mars.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Launch Escape System (LES) for Mars Ascent Vehicle</td>
+                <td>Ascent Vehicle</td>
+                <td>Demonstrate launch escape capabilities for future Mars sample return missions.</td>
+                <td>2024 (Planned)</td>
+                <td>N/A</td>
+                <td>Tested ascent and launch escape capabilities for a Mars Sample Return mission.</td>
+            </tr>
+            <tr>
+                <td style="color: maroon">Mars Sample Return Mission (MSR)</td>
+                <td>Future Mission</td>
+                <td>Return samples from Mars to Earth for detailed analysis.</td>
+                <td>2028 (Planned)</td>
+                <td>N/A</td>
+                <td>Future mission to collect and return soil and rock samples from Mars.</td>
+            <!-- Additional mission rows can go here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Sort function for table columns
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("marsTable");
+            switching = true;
+            dir = "asc"; // Set the sorting direction to ascending initially
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir === "asc" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase() || 
+                        dir === "desc" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        // Search function for filtering table rows
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("marsTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                let rowContainsSearch = false;
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            rowContainsSearch = true;
+                            break;
+                        }
+                    }
+                }
+                if (rowContainsSearch) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+    </script>
+</body>
+<br>
+<br>
+
+<h2 style="color:  maroon; font-style: italic;"><center><span class="shining-text">MORE ABOUT MARS</span></center></h2>
+<br>
+<br>
+<br>
+<table cellpadding="10" cellspacing="5">
+        <tr>
+            <td><iframe width="400" height="400" src="https://www.youtube.com/embed/t9G36CDLzIg?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/GUqsH5y1j1M?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td><iframe width="400" height="400" src="https://www.youtube.com/embed/Vy_RPd0rblI?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe width="400" height="400" src="https://www.youtube.com/embed/JJZ6UlH_TfQ?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td><br></td>
+        </tr>
+        <tr>
+            <td><iframe width="400" height="400" src="https://www.youtube.com/embed/fxGGc-mCwYg?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/XRhe4YC_FjQ?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></td>
+        </tr>
+    </table>
+    
+<br>
+<br>
+<br>
+</html>

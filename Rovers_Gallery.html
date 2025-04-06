@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: white;
+            scroll-behavior: smooth;
+            background-image: url(bt.jpg);
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        header.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        header a:hover {
+            background:white;
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 120px 40px 80px;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 1200px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color:white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(34, 34, 34, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: white;
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h1 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 2000;
+        }
+
+        .popup img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background: rgba(248, 245, 243, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .popup .close:hover {
+            background:white;
+            transform: rotate(90deg);
+        }
+
+        .back-btn {
+            padding: 12px 28px;
+            font-size: 16px;
+            background-color:white;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 2rem 0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .back-btn:hover {
+            background-color:white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            header a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
+            .section {
+                padding: 100px 20px 60px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .card img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-image: url(images/new\ bc.jpg);">
+    <header id="header">
+        <div class="nav-container">
+            <a href="#section1">Spirit and Opportunity</a>
+            <a href="#section2">Pictures Captured By The Twin Rovers</a>
+            <a href="#section3">The Route Maps Of The Rovers</a>
+            <a href="Main_Rover.html">Back</a>
+        </div>
+    </header>
+
+    <div id="section1" class="section">
+        <h2>Spirit and Opportunity</h2>
+        <div class="gallery">
+            <div class="card">
+                <img src="images/sprit image1.avif" alt="Mars Exploration">
+                <div class="card-content">
+                    <h1>A computer rendering of Spirit on Mars</h1>
+                    <p>Spirit and Opportunity were twin NASA rovers that landed on Mars in 2004. Their mission was to explore the Martian surface and look for signs of past water activity. Spirit landed in Gusev Crater, while Opportunity touched down in Meridiani Planum. Although designed to last only 90 days, Spirit operated until 2010 and Opportunity until 2018. Both rovers found strong evidence of ancient water and minerals that suggested Mars could have once supported life. Their success laid the groundwork for future missions like Curiosity and Perseverance.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/sprit image 2.avif" alt="Mars View">
+                <div class="card-content">
+                    <h1>Spirit's last Words</h1>
+                    <p>Spirit, NASA's Mars rover, sent its last communication to Earth on March 22, 2010. The rover's final message was a simple yet poignant "JUNE 2, 2010" - a timestamp that marked the end of its remarkable journey. Spirit had been exploring Mars since 2004, far exceeding its planned 90-day mission. The rover's discoveries significantly advanced our understanding of the Martian geology and climate. Despite its silence, Spirit's legacy continues to inspire future Mars exploration. Its findings remain a valuable resource for scientists studying the Red Planet.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/sprit image 3.webp" alt="Mars Sky">
+                <div class="card-content">
+                    <h1>NASA's Spirit Rover Gets Looked Over</h1>
+                    <p>Technicians do final checks on NASA's Spirit rover in this image from March 28, 2003. The rover – and its twin, Opportunity – studied the history of climate and water at sites on Mars where conditions may once have been favorable to life. Each rover is about the size of a golf cart and seven times heavier (about 405 pounds or 185 kilograms) than the Sojourner rover launched on the Mars Pathfinder to Mars mission in 1996.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section2" class="section">
+        <h2>Pictures Captured By The Twin Rovers</h2>
+        <div class="gallery">
+            <div class="card">
+                <img src="images/exp1.webp" alt="Mars Colony">
+                <div class="card-content">
+                    <h1>Emerging from the Dust</h1>
+                    <p>After a planet-wide dust storm in June 2018 blocked the Opportunity rover's solar panels, NASA scientists waited for images from the planet to clear. This image, captured Sept. 20 by the Mars Reconnaissance Orbiter, was among the key signs that the sky was clearing, since engineers could see the rover again. The image was taken from 166 miles (267 kilometers) above the surface of Mars.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp2.webp" alt="Mars Base">
+                <div class="card-content">
+                    <h1>A "Sprained Ankle" Panorama</h1>
+                    <p>Over nearly two weeks in June 2017, the Opportunity rover captured the images that make up this panorama view of Endeavor Crater and Perseverance Valley. The panorama was made possible by one of the rover's wheels getting stuck pointed the wrong way, the robot equivalent of a sprained ankle, hence the nickname.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp3.webp" alt="Martian City">
+                <div class="card-content">
+                    <h1>A Nod to the Past</h1>
+                    <p>The Opportunity team dubbed this fairly young feature "Orion Crater" because the rover passed by in April 2017, during the 45th anniversary of Apollo 16. That mission's lunar module was dubbed Orion. Scientists believe that Orion Crater, which stretches about 90 feet (27 meters) across, is less than 10 million years old.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp4.webp" alt="Mars Exploration">
+                <div class="card-content">
+                    <h1>Looking Back</h1>
+                    <p>On March 31, 2016, the Opportunity rover captured this dramatic image of its own tire tracks from its journey down a feature called "Knudsen Ridge." In the background is a dust devil, a common meteorological feature on Mars.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp5.webp" alt="Mars View">
+                <div class="card-content">
+                    <h1>A Robot Geologist at Work</h1>
+                    <p>Opportunity captured this shot of rocks within Marathon Valley, highlighting its target at the time, "Private Joseph Field," on May 29, 2016. The image is a composite of four separate photographs taken by a camera on the rover's arm, plus data about rock colors from its panoramic camera.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp6.jpg" alt="Mars Sky">
+                <div class="card-content">
+                    <h1>Opportunity Surpasses Marathon Distance</h1>
+                    <p>NASA's Mars Exploration Rover Opportunity achieved a cumulative driving distance surpassing that of a marathon race on March 24, 2015, as the rover neared a destination called "Marathon Valley," seen in the middle ground of this image taken in early March.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp7.jpg" alt="Mars Exploration">
+                <div class="card-content">
+                    <h1>Opportunity Mars Rover's View of Marathon Valley</h1>
+                    <p>This false-color view captured by NASA's Opportunity Mars rover shows part of Marathon Valley as seen from an overlook to the north. The image was taken by the rover's Pancam on March 13, 2015.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp8.jpg" alt="Mars View">
+                <div class="card-content">
+                    <h1>Marathon Valley, Seen by NASA's Opportunity Mars Rover</h1>
+                    <p>This view from NASA's Opportunity Mars rover shows part of Marathon Valley, a destination on the western rim of Endeavour Crater, as seen from an overlook north of the valley. The image was taken on March 13, 2015 by the rover's PanCam.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/exp9.jpg" alt="Mars Sky">
+                <div class="card-content">
+                    <h1>Opportunity on Mars</h1>
+                    <p>NASA's Mars rover Opportunity has been exploring Mars since 2004 and found its strangest Mars rocks yet in March 2015.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="section3" class="section">
+        <h2>The Route Maps Of The Rovers</h2>
+        <div class="gallery">
+            <div class="card">
+                <img src="images/map1.jpg" alt="Mission to Mars">
+                <div class="card-content">
+                    <h1>Opportunity's Marathon</h1>
+                    <p>As of March 2015, Opportunity is currently exploring a region known as Marathon Valley, where the rover is expected to complete the first ever official marathon distance on another world soon.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/map2.webp" alt="Spacecraft">
+                <div class="card-content">
+                    <h1>Spirit route map</h1>
+                    <p>SPIRIT ROUTE MAP The Mars Exploration Rover mission's official route map, developed by Larry Crumpler.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/map3.jpg" alt="Mars Astronauts">
+                <div class="card-content">
+                    <h1>Mission timeline</h1>
+                    <p>Lifetime progress map with Washington, D.C. overlay for size and distance comparison</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">X</span>
+        <img id="popup-img" src="" alt="Expanded Image">
+    </div>
+    <script>
+        // Smooth scroll for header links
+        document.querySelectorAll('header a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Image popup functionality
+        document.querySelectorAll('.card img').forEach(img => {
+            img.addEventListener('click', function () {
+                document.getElementById('popup-img').src = this.src;
+                document.getElementById('popup').style.display = 'flex';
+                document.getElementById('header').classList.add('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('header').classList.remove('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fade-in animation for sections on scroll
+        function checkVisibility() {
+            document.querySelectorAll(".section").forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0) {
+                    section.classList.add("visible");
+                }
+            });
+        }
+
+        // Initial check
+        checkVisibility();
+        
+        // Check on scroll
+        document.addEventListener("scroll", checkVisibility);
+        
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                document.getElementById('header').classList.remove('hidden');
+                return;
+            }
+            if (currentScroll > lastScroll) {
+                // Scrolling down
+                document.getElementById('header').classList.add('hidden');
+            } else {
+                // Scrolling up
+                document.getElementById('header').classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

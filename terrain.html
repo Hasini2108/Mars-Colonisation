@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Terrain - Mars Exploration</title>
+  <meta name="description" content="Learn about the terrain and volcanoes of Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <h1 class="text-center">Mars Terrain</h1>
+      
+      <!-- Mars Landscape Overview -->
+      <section>
+        <div class="terrain-feature">
+          <div>
+            <h2>The Red Planet's Landscape</h2>
+            <p>
+              Mars has some of the most dramatic landscapes in our solar system, including the largest volcano 
+              and the deepest canyon. The planet's surface is characterized by impact craters, valleys, 
+              dunes, and polar ice caps.
+            </p>
+            <p>
+              The distinctive red color of Mars comes from iron oxide (rust) on its surface. The planet 
+              experiences dust storms that can cover the entire planet and last for months.
+            </p>
+          </div>
+          <div>
+            <img src="images/mars-landscape.jpg" alt="Mars landscape" class="terrain-img">
+          </div>
+        </div>
+      </section>
+      
+      <!-- Active Volcanoes -->
+      <section>
+        <h2 class="text-center">Active Volcanoes on Mars</h2>
+        <div class="grid grid-cols-3">
+          <!-- Olympus Mons -->
+          <div class="card">
+            <a href="olympus-mons.html">
+              <img src="images/olympus-mons.jpg" alt="Olympus Mons" class="card-img">
+              <div class="card-content">
+                <h3>Olympus Mons</h3>
+                <p>The largest volcano in the solar system, standing at 22 km (13.6 miles) high and spanning 600 km (372 miles) in diameter.</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <p class="rover-stat-label">Status</p>
+                    <p>Dormant</p>
+                  </div>
+                  <div>
+                    <p class="rover-stat-label">Last Eruption</p>
+                    <p>Estimated 2-25 million years ago</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- Tharsis Montes -->
+          <div class="card">
+            <a href="tharsis-montes.html">
+              <img src="images/tharsis-montes.jpg" alt="Tharsis Montes" class="card-img">
+              <div class="card-content">
+                <h3>Tharsis Montes</h3>
+                <p>A group of three large shield volcanoes: Arsia Mons, Pavonis Mons, and Ascraeus Mons, aligned along the Tharsis Ridge.</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <p class="rover-stat-label">Status</p>
+                    <p>Dormant</p>
+                  </div>
+                  <div>
+                    <p class="rover-stat-label">Last Eruption</p>
+                    <p>Estimated 100-300 million years ago</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- Elysium Mons -->
+          <div class="card">
+            <a href="elysium-mons.html">
+              <img src="images/elysium-mons.jpg" alt="Elysium Mons" class="card-img">
+              <div class="card-content">
+                <h3>Elysium Mons</h3>
+                <p>A large volcano in the Elysium Planitia region, rising 14 km (8.7 miles) above the surrounding plains.</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <p class="rover-stat-label">Status</p>
+                    <p>Dormant</p>
+                  </div>
+                  <div>
+                    <p class="rover-stat-label">Last Eruption</p>
+                    <p>Estimated 3-4 billion years ago</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Other Notable Features -->
+      <section>
+        <h2 class="text-center">Other Notable Features</h2>
+        <div class="grid grid-cols-2">
+          <div class="card">
+            <a href="valles-marineris.html">
+              <div class="card-content">
+                <h3>Valles Marineris</h3>
+                <img src="images/valles-marineris.jpg" alt="Valles Marineris" class="terrain-img">
+                <p>
+                  Often called the "Grand Canyon of Mars," Valles Marineris is a system of canyons that runs along the Martian equator. It stretches for nearly 4,000 km (2,500 miles) and reaches depths of up to 7 km (4.3 miles).
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a href="polar-ice-caps.html">
+              <div class="card-content">
+                <h3>Polar Ice Caps</h3>
+                <img src="images/polar-ice-caps.jpg" alt="Mars Polar Ice Caps" class="terrain-img">
+                <p>
+                  Mars has two permanent polar ice caps composed of water ice and carbon dioxide ice. 
+                  These caps grow and shrink with the Martian seasons, and studying them helps scientists 
+                  understand Mars' climate history.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

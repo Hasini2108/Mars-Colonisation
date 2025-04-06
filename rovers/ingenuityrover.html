@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingenuity Rover</title>
+  <style>
+  .classic-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px 0;
+  }
+
+  .classic-timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+  }
+
+  .timeline-item {
+    padding: 20px 30px;
+    position: relative;
+    width: 50%;
+  }
+
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: -8px;
+    background-color: white;
+    border: 2px solid black;
+    top: 30px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .timeline-item.left {
+    left: 0;
+  }
+
+  .timeline-item.right {
+    left: 50%;
+  }
+
+  .timeline-item.right::after {
+    left: -8px;
+  }
+
+  .timeline-item .content {
+    background-color: black;
+    padding: 20px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .timeline-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .timeline-item p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+
+    .classic-timeline::after {
+      left: 20px;
+    }
+
+    .timeline-item.right::after,
+    .timeline-item.left::after {
+      left: 8px;
+    }
+  }
+    #stars
+    {
+      background-image: url('images/hey.jpeg');
+    }
+    .reshmaa
+    {
+      background-image: url('images/hey.jpeg');
+    }
+    #exploreButton {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        #exploreButton:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            transform: scale(1.1);
+        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Smooth transitions for content */
+    section {
+      display: none;
+      padding: 60px 10px;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 100px 10px;
+      position: relative;
+      z-index: 1;
+      background-image: url("hey.jpeg");
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero nav a {
+      color: white;
+      font-size: 1.2rem;
+      margin: 0 10px;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .hero nav a:hover {
+      color: #f39c12;
+    }
+
+    /* Section Styles */
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* Gallery and 3D Model Section Styles */
+    #3dmodel iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      background-color: black;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #222;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+    }
+
+    footer a:hover {
+      color: #f39c12;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero" id="stars">
+    <h1>Ingenuity Rover</h1>
+    <nav>
+      <a href="#" data-target="about">About</a>
+      <a href="#" data-target="3dmodel">3D Model</a>
+      <a href="#" data-target="design">Design</a>
+      <a href="#" data-target="Timeline">Timeline</a>
+      
+    </nav>
+    
+  </div>
+
+  <!-- Sections -->
+  <section id="about" style="background-color: black; color: white; padding: 10px; font-family: Arial, sans-serif; text-align: center; " class="reshmaa">
+    <h2 style="margin-bottom: 10px; color: #d1d1d1; font-size: 2.2rem; font-weight: 900;">WHAT IS INGENUITY ??</h2>
+    <p style="margin-bottom: 30px; font-size: 16px; " id="reshmaa">
+        Ingenuity is a small helicopter that was sent to Mars as part of NASA's Perseverance mission. It was designed to demonstrate powered flight on Mars, a planet with a thin atmosphere.
+    </p>
+
+    <div style="line-height: 1.6; text-align: center;" class="reshmaa">
+        <strong style="color: #d1d1d1; font-weight: 800;">OVERVIEW</strong><br><br>
+        Ingenuity is a robotic helicopter that is part of NASA's Perseverance Mars rover mission. It was designed to test the feasibility of rotorcraft flight on Mars.
+
+        <br><br><strong style="color: #d1d1d1; font-weight: 800;">DESIGN AND DEVELOPMENT</strong><br><br>
+        Ingenuity is a small robotic helicopter that is a key part of NASA's Perseverance Mars rover mission. It was meticulously designed to demonstrate and test the feasibility of powered, controlled rotorcraft flight in the thin atmosphere of Mars, a major milestone in the exploration of the Red Planet. Ingenuity’s success serves as a proof of concept for future aerial exploration on Mars and other planetary bodies, offering the potential to provide valuable aerial perspectives and data for upcoming missions.
+        <br><br><strong style="color: #d1d1d1; font-weight: 900;">KEY FEATURES </strong><br><br>
+        <ul style="padding-left: 10px; display: inline-block; text-align: left;">
+            <li>Rotor system: Ingenuity has a rotor system that consists of two counter-rotating blades, each measuring 4 feet (1.2 meters) in diameter.</li>
+            <li>Solar-powered: The rover is powered by solar panels, which charge its batteries.</li>
+            <li>Autonomous flight: Ingenuity is capable of autonomous flight, using a combination of sensors and software to navigate and control its flight.</li>
+            <li>Communication: The rover communicates with the Perseverance rover using a radio link.</li><br><br>
+        </ul>
+
+        <strong style="color: #d1d1d1; font-weight: 800;"><br>MISSION OBJECTIVES</strong><br><br>
+        <ul style="padding-left: 10px; display: inline-block; text-align: left;">
+            <li>Test rotorcraft flight: Ingenuity's primary objective is to test the feasibility of rotorcraft flight on Mars.</li>
+            <li>Demonstrate autonomous flight: The rover will demonstrate autonomous flight, using its sensors and software to navigate and control its flight.</li>
+            <li>Gather data: Ingenuity will gather data on the Martian atmosphere, including temperature, humidity, and wind speed.</li>
+        </ul><br><br>
+
+        <strong style="color: #d1d1d1; font-weight: 800;"><br>ACCOMPLISHMENTS </strong><br><br>
+        <ul style="padding-left: 10px; display: inline-block; text-align: left;">
+            <li>First powered flight: Ingenuity successfully completed its first powered flight on Mars on April 19, 1021.</li>
+            <li>Multiple flights: The rover has completed multiple flights on Mars, demonstrating its ability to fly autonomously.</li>
+            <li>Longest flight: Ingenuity's longest flight to date lasted 169.5 seconds, covering a distance of 423 meters (1,388 feet).</li>
+        </ul><br><br>
+
+</section>
+  
+  <section id="3dmodel" class="reshmaa">
+    <h2>EXPLORE INGENUITY'S 3D MODEL</h2>
+    <p>Explore the 3D model of the Ingenuity rover and interact with its components.</p>
+    <!-- Embed 3D Model (example) -->
+    <p style="font-size: 1.1rem;">
+      Ingenuity, NASA's Mars Helicopter, is a small, autonomous rotorcraft that made history by achieving the first powered, controlled flight on another planet. This 3D model allows you to explore the intricate design of Ingenuity, including its rotors, solar panel, and navigation system. Discover the engineering marvel that paved the way for future aerial exploration on Mars.
+    </p>
+
+    <!-- Explore 3D Model Button with inline styles -->
+    <a href="ingenuitysdmmodel.html" style="
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background-color: black;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+      margin-top: 10px;
+    " 
+    onmouseover="this.style.backgroundColor = '#f39c12'; this.style.color = 'black'; this.style.border = '2px solid #f39c12';" 
+    onmouseout="this.style.backgroundColor = 'black'; this.style.color = 'white'; this.style.border = '2px solid white';">
+      Explore 3D Model
+    </a>
+</section>
+
+
+<section id="design" style="background-color: black; color: white; padding: 100px 0; text-align: center; font-family: Arial, sans-serif;" class="reshmaa">
+  <h2 style="font-weight: bold; font-size: 2.5rem; margin-bottom: 60px; letter-spacing: 1px;">INGENUITY ROVER OVER-VIEW</h2>
+  <p style="font-size: 1.2rem; line-height: 1.9; max-width: 1100px; margin: 0 auto 50px auto; text-align: center;">
+      Ingenuity is a remarkable feat of engineering, designed to overcome the challenges of flight in Mars' thin atmosphere. Below, we delve into the intricate components that make up this small yet powerful helicopter and its technical specifications.
+  </p>
+
+  <h3 style="font-weight: bold; font-size: 17px; margin-bottom: 40px; letter-spacing: 1px;">KEY DESIGN FEATURES</h3>
+  <ul style="list-style-type: disc; margin-left: 60px; font-size: 1.1rem; margin-bottom: 60px; text-align: left; padding-left: 0; line-height: 1.8;">
+      <li><strong>Lightweight Frame:</strong> Ingenuity's frame is built using lightweight materials such as carbon fiber to keep its mass low while maintaining structural integrity. This is crucial for flight in Mars' thin atmosphere.</li>
+      <li><strong>High-Speed Rotors:</strong> The rotor blades of Ingenuity spin at incredibly high speeds—about 2800 revolutions per minute (RPM). This is approximately 10 times faster than helicopter blades on Earth to compensate for the thin Martian atmosphere.</li>
+      <li><strong>Solar Panels:</strong> Ingenuity is equipped with solar panels that provide power to its systems during the day. These solar panels charge the rover's batteries, allowing it to operate autonomously, even during the cold Martian nights.</li>
+      <li><strong>Autonomous Flight System:</strong> Ingenuity uses a complex onboard flight controller that processes data from sensors, including accelerometers, gyroscopes, and a camera, to control its movements. This system allows Ingenuity to fly autonomously without human intervention.</li>
+      <li><strong>Imaging System:</strong> A color camera mounted on Ingenuity allows it to capture high-quality images and videos during its flights. These images are used to assist in navigation, but they also provide valuable scientific data.</li>
+      <li><strong>Thermal Insulation:</strong> Ingenuity is equipped with a sophisticated thermal control system to survive the extreme temperatures of Mars. The rover’s onboard heaters ensure that critical components, such as the electronics and batteries, remain within operational temperature ranges.</li>
+  </ul>
+
+  <h3 style="font-weight: bold; font-size: 17px; margin-bottom: 40px; letter-spacing: 1px;">ENGINEERING CHALLENGES OVERCOME</h3>
+  <p style="font-size: 1.2rem; line-height: 1.9; max-width: 1100px; margin: 0 auto 50px auto; text-align: center;">
+      Designing a rotorcraft for Mars presented numerous engineering challenges. With an atmosphere that is just 1% the density of Earth's, Ingenuity needed specialized design elements to generate lift and control its flight.
+  </p>
+  <ul style="list-style-type: disc; margin-left: 60px; font-size: 1.1rem; margin-bottom: 60px; text-align: left; padding-left: 0; line-height: 1.8;">
+      <li><strong>High Altitude Capability:</strong> Ingenuity was designed to operate in Mars' low atmospheric pressure, requiring larger wings and faster rotor speeds to generate lift. This allows it to achieve flight even at high altitudes, where Earth's helicopters would struggle.</li>
+      <li><strong>Extreme Cold:</strong> Mars' temperatures can drop to -130°C (-102°F), so the helicopter’s components were engineered to withstand these frigid conditions, with heaters and insulation ensuring its survival during the Martian nights.</li>
+      <li><strong>Minimal Weight:</strong> The design prioritized weight reduction, as Ingenuity’s low mass is crucial for achieving flight. The entire helicopter weighs just 1.8 kilograms (4 pounds), making it incredibly lightweight and capable of achieving the necessary lift.</li>
+  </ul>
+
+  <h3 style="font-weight: bold; font-size: 17px; margin-bottom: 40px; letter-spacing: 1px;">INGENUITY ROVER SPECIFICATIONS </h3>
+  <table style="width: 80%; margin: 30px auto; border-collapse: collapse; background-color: black; font-size: 1.1rem;">
+      <thead>
+          <tr>
+              <th style="padding: 10px; text-align: left; border: 1px solid white; background-color: black; color: white;">Feature</th>
+              <th style="padding: 10px; text-align: left; border: 1px solid white; background-color: black; color: white;">Description</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Mass</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">1.8 kg (4 lbs)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Height</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">0.6 meters (2 feet)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Wingspan</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">4 meters (13 feet)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Speed</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Up to 10 meters per second (22 mph)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Flight Duration</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Maximum 90 seconds per flight</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Altitude</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Up to 5 meters (16 feet)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Rotor Speed</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">2800 RPM</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Power Source</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Solar Panels (for charging batteries)</td>
+          </tr>
+          <tr>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Camera</td>
+              <td style="padding: 10px; text-align: left; border: 1px solid white; background-color:black; color: white;">Color Camera for Navigation and Imaging</td>
+          </tr>
+      </tbody>
+  </table>
+</section>
+<section id="Timeline" class="reshmaa" style="padding: 100px 0; text-align: center;">
+  <h2 style="font-weight: bold; font-size: 2.5rem; margin-bottom: 60px; letter-spacing: 1px;">INGENUITY ROVER TIMELINE</h2>
+
+  <div class="classic-timeline">
+    <!-- Pre-Launch and Launch -->
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>July 30, 2020</h3>
+        <p><strong>Launch:</strong> Mars 2020 mission launched with Perseverance and Ingenuity.</p>
+      </div>
+    </div>
+
+    <!-- Cruise and Landing -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>February 18, 2021</h3>
+        <p><strong>Landing:</strong> Perseverance rover landed in Jezero Crater with Ingenuity.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>February 20, 2021</h3>
+        <p><strong>First Audio:</strong> First sound recorded from another planet by Perseverance.</p>
+      </div>
+    </div>
+
+    <!-- Deployment and Initial Flights -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>March 4, 2021</h3>
+        <p><strong>Test Drive:</strong> Perseverance performed its first test drive.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>April 3, 2021</h3>
+        <p><strong>Deployment:</strong> Ingenuity deployed on Martian surface.</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>April 19, 2021</h3>
+        <p><strong>First Flight:</strong> First powered, controlled flight on Mars.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>April 22 - 30, 2021</h3>
+        <p><strong>Initial Flights:</strong> Second, third, and fourth test flights completed.</p>
+      </div>
+    </div>
+
+    <!-- Operations and Science Campaigns -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>May - July 2021</h3>
+        <p><strong>Flight Tests & Campaign:</strong> Fifth to ninth flights; Perseverance began science operations.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>August 5-6, 2021</h3>
+        <p><strong>Sampling Attempt:</strong> First sampling attempt of Martian lakebed.</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>Oct - Dec 2021</h3>
+        <p><strong>Flights:</strong> 14th to 17th Ingenuity flights completed.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>Jan - Apr 2022</h3>
+        <p><strong>Flights & Campaign:</strong> Issole sample attempt abandoned; flights 19 to 26 completed.</p>
+      </div>
+    </div>
+
+    <!-- Notable Achievements and Incidents -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>May 3-5, 2022</h3>
+        <p><strong>Communication Loss:</strong> Contact with Ingenuity temporarily lost and regained.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>July - August 2022</h3>
+        <p><strong>Samples:</strong> Perseverance collected additional Delta Front Campaign samples.</p>
+      </div>
+    </div>
+
+    <!-- Records -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>October 5, 2023</h3>
+        <p><strong>Height Record:</strong> 24 meters reached during 61st flight.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>October 12, 2023</h3>
+        <p><strong>Speed Record:</strong> 10 meters per second during 62nd flight.</p>
+      </div>
+    </div>
+
+    <!-- Retirement and Legacy -->
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>January 18, 2024</h3>
+        <p><strong>Final Flight:</strong> 72nd flight ends with rotor blade damage.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>January 25, 2024</h3>
+        <p><strong>Mission End:</strong> NASA announces retirement of Ingenuity.</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>Total: 1042 sols</h3>
+        <p><strong>Legacy:</strong> Ingenuity far exceeded expectations beyond tech demo phase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Timeline Styling (integrated in-place) -->
+
+
+  <!-- Footer -->
+
+  <script>
+    // JavaScript to handle dynamic section display
+    document.querySelectorAll('.hero nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetSection = document.getElementById(this.getAttribute('data-target'));
+
+        // Hide all sections
+        document.querySelectorAll('section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        // Show the clicked section with smooth transition
+        targetSection.classList.add('active');
+      });
+    });
+
+    // Set the initial active section
+    document.getElementById('about').classList.add('active');
+  </script>
+</body>
+</html>

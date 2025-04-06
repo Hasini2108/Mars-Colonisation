@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Rovers - Mars Exploration</title>
+  <meta name="description" content="Learn about the rovers exploring Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <h1 class="text-center">Mars Rovers</h1>
+      
+      <div class="grid grid-cols-3">
+        <!-- Ingenuity -->
+        <a href="rovers/ingenuityrover.html" class="card">
+          <img src="images/ingenuity.jpg" alt="Ingenuity" class="card-img">
+          <div class="card-content">
+            <h2>Ingenuity</h2>
+            <p>The first aircraft to achieve powered, controlled flight on another planet, serving as a technology demonstration for future aerial exploration.</p>
+          </div>
+        </a>
+        
+        <!-- Curiosity -->
+        <a href="rovers/curiosity.html" class="card">
+          <img src="images/curiosity.jpg" alt="Curiosity" class="card-img">
+          <div class="card-content">
+            <h2>Curiosity</h2>
+            <p>NASA's car-sized rover designed to explore the Gale Crater on Mars as part of NASA's Mars Science Laboratory mission.</p>
+          </div>
+        </a>
+        
+        <!-- Opportunity and Spirit-->
+        <a href="Main_Rover.html" class="card">
+          <img src="images/opportunity.jpg" alt="Opportunity" class="card-img">
+          <div class="card-content">
+            <h2>Spirit and Opportunity</h2>
+            <p>One of the twin Mars Exploration Rovers, Opportunity holds the record for the longest distance driven on another world.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

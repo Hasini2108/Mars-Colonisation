@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polar Ice Caps - Mars Exploration</title>
+  <meta name="description" content="Learn about the North and South Polar Ice Caps of Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    .info-box {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px;
+      border-radius: var(--radius);
+      display: none;
+      font-size: 14px;
+      max-width: 200px;
+      z-index: 10;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .hotspot:hover {
+      transform: scale(1.2);
+    }
+    .hotspot:hover + .info-box {
+      display: block;
+    }
+    .feature-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius);
+    }
+    .feature-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .feature-facts {
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      transition: background-color 0.3s ease;
+    }
+    .external-link:hover {
+      background-color: var(--accent);
+    }
+    .tabs {
+      display: flex;
+      margin: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .tab.active {
+      border-bottom-color: var(--accent);
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+      padding: 1.5rem 0;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .seasonal-changes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .season {
+      text-align: center;
+    }
+    .season img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .seasonal-changes {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .seasonal-changes {
+        grid-template-columns: 1fr;
+      }
+      .tabs {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="feature-content">
+        <h1>Mars Polar Ice Caps</h1>
+        <p>The frozen regions at the north and south poles of Mars</p>
+        
+        <div class="image-container">
+          <img src="images/polar-ice-caps.jpg" alt="Mars Polar Ice Caps" class="feature-img">
+          
+          <!-- Hotspots for hover info -->
+          <div class="hotspot" style="top: 120px; left: 200px;"></div>
+          <div class="info-box" style="top: 140px; left: 220px;">North Polar Cap, composed primarily of water ice with a seasonal layer of CO₂ ice.</div>
+          
+          <div class="hotspot" style="top: 120px; left: 400px;"></div>
+          <div class="info-box" style="top: 140px; left: 420px;">South Polar Cap, which contains both water ice and carbon dioxide ice.</div>
+        </div>
+        
+        <div class="tabs">
+          <div class="tab active" data-tab="north">North Polar Cap</div>
+          <div class="tab" data-tab="south">South Polar Cap</div>
+          <div class="tab" data-tab="seasons">Seasonal Changes</div>
+          <div class="tab" data-tab="discovery">Discovery & Research</div>
+        </div>
+        
+        <div class="tab-content active" id="north">
+          <div class="feature-facts">
+            <h2>North Polar Cap</h2>
+            <ul>
+              <li>Diameter: Approximately 1,000 km (620 miles)</li>
+              <li>Composition: Primarily water ice with seasonal carbon dioxide frost</li>
+              <li>Thickness: Up to 3 km (1.9 miles)</li>
+              <li>Features: Spiral troughs and layers that record climate history</li>
+              <li>Location: Centered at 90°N</li>
+            </ul>
+          </div>
+          
+          <p>
+            The North Polar Cap is a permanent feature composed mainly of water ice. During the Martian winter, it is covered by a thin layer of carbon dioxide ice (dry ice) that sublimates (changes directly from solid to gas) during the summer.
+          </p>
+          
+          <p>
+            One of the most distinctive features of the North Polar Cap is its spiral pattern of troughs, which scientists believe are formed by a combination of wind patterns, solar heating, and the planet's rotation.
+          </p>
+        </div>
+        
+        <div class="tab-content" id="south">
+          <div class="feature-facts">
+            <h2>South Polar Cap</h2>
+            <ul>
+              <li>Diameter: Approximately 350 km (220 miles) in summer, expanding to 3,000 km (1,860 miles) in winter</li>
+              <li>Composition: Permanent water ice cap covered by a thicker layer of carbon dioxide ice</li>
+              <li>Thickness: Up to 3 km (1.9 miles)</li>
+              <li>Features: "Swiss cheese" terrain caused by sublimation of CO₂ ice</li>
+              <li>Location: Centered at 90°S</li>
+            </ul>
+          </div>
+          
+          <p>
+            The South Polar Cap differs from its northern counterpart in that it retains a permanent layer of carbon dioxide ice year-round. This is due to the south pole being colder than the north pole, as Mars' orbit is more elliptical than Earth's.
+          </p>
+          
+          <p>
+            The "Swiss cheese" appearance of the South Polar Cap is caused by the sublimation of carbon dioxide ice, leaving behind circular depressions in the surface. These features change over time as more ice sublimates during the Martian summer.
+          </p>
+        </div>
+        
+        <div class="tab-content" id="seasons">
+          <h2>Seasonal Changes</h2>
+          
+          <p>
+            The Martian polar caps undergo dramatic seasonal changes as Mars orbits the Sun. During winter, the caps expand as carbon dioxide from the atmosphere freezes onto the surface. In summer, much of this dry ice sublimates back into the atmosphere, causing the caps to shrink.
+          </p>
+          
+          <div class="seasonal-changes">
+            <div class="season">
+              <img src="images/mars-spring.jpg" alt="Mars in Spring">
+              <p><strong>Spring</strong></p>
+              <p>CO₂ begins to sublimate</p>
+            </div>
+            <div class="season">
+              <img src="images/mars-summer.jpg" alt="Mars in Summer">
+              <p><strong>Summer</strong></p>
+              <p>Minimum ice cap size</p>
+            </div>
+            <div class="season">
+              <img src="images/mars-fall.jpg" alt="Mars in Fall">
+              <p><strong>Fall</strong></p>
+              <p>CO₂ begins to freeze</p>
+            </div>
+            <div class="season">
+              <img src="images/mars-winter.jpg" alt="Mars in Winter">
+              <p><strong>Winter</strong></p>
+              <p>Maximum ice cap size</p>
+            </div>
+          </div>
+          
+          <p>
+            These seasonal changes affect Mars' atmosphere and climate. As carbon dioxide freezes and sublimates, the atmospheric pressure changes by up to 30%, which is much more dramatic than seasonal changes on Earth.
+          </p>
+        </div>
+        
+        <div class="tab-content" id="discovery">
+          <h2>Discovery and Research</h2>
+          
+          <p>
+            The polar caps of Mars have been observed from Earth since the 17th century. Italian astronomer Giovanni Cassini made some of the first recorded observations of the polar caps in 1666.
+          </p>
+          
+          <p>
+            Modern exploration of the Martian poles began with the Mariner and Viking missions in the 1960s and 1970s. More recently, missions such as Mars Global Surveyor, Mars Reconnaissance Orbiter, and Phoenix Lander have provided detailed information about the composition and structure of the polar caps.
+          </p>
+          
+          <div class="feature-facts">
+            <h2>Key Discoveries</h2>
+            <ul>
+              <li>2008: Phoenix Lander confirmed the presence of water ice just below the surface near the north pole</li>
+              <li>2011: Mars Reconnaissance Orbiter discovered flowing water during warm seasons</li>
+              <li>2018: Radar data suggested a possible liquid water lake beneath the south polar ice cap</li>
+              <li>2020: Multiple subsurface lakes detected under the south polar cap</li>
+            </ul>
+          </div>
+          
+          <p>
+            The polar caps are of great interest to scientists because they contain a record of Mars' climate history in their layers, similar to ice cores on Earth. They also represent the largest known reservoirs of water on Mars, which could be crucial for future human exploration.
+          </p>
+        </div>
+        
+        <a href="https://en.wikipedia.org/wiki/Martian_polar_ice_caps" target="_blank" class="external-link">
+          Learn More about Mars Polar Ice Caps <i class="fas fa-external-link-alt"></i>
+        </a>
+        
+        <div style="margin: 2rem 0;">
+          <a href="terrain.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Mars Terrain
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+  <script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.tab');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs and content
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          // Show corresponding content
+          const tabId = this.getAttribute('data-tab');
+          document.getElementById(tabId).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

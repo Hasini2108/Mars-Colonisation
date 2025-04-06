@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mars Colonization Workshop Registration</title>
+    <style>
+        /* Keeping all your original CSS unchanged */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            background-image: url(images/hey.jpeg);
+        }
+
+        /* Button styles for the Back Home button */
+        .back-home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4a148c, #880e4f);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-home-button:hover {
+            background: linear-gradient(135deg, #880e4f, #4a148c);
+            transform: translateY(-2px);
+        }
+
+        .back-home-button:active {
+            transform: translateY(1px);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: linear-gradient(135deg, #120028, #2a004a);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d8b4fe;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .details {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #4a148c;
+            padding-bottom: 20px;
+        }
+
+        .details h3 {
+            color: #d8b4fe;
+            margin-bottom: 10px;
+        }
+
+        .details p {
+            line-height: 1.6;
+        }
+
+        .form-container, .payment-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #4a148c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d8b4fe;
+        }
+
+        .form-group input[type="text"], .form-group input[type="email"], .form-group select, .form-group textarea,
+        .payment-form input[type="text"], .payment-form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #4a148c;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .form-group input[type="text"]:focus, .form-group input[type="email"]:focus, .form-group select:focus, .form-group textarea:focus,
+        .payment-form input[type="text"]:focus, .payment-form input[type="number"]:focus {
+            border-color: #d8b4fe;
+            outline: none;
+            box-shadow: 0 0 5px rgba(216, 180, 254, 0.5);
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #4a148c, #880e4f);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #880e4f, #4a148c);
+            transform: translateY(-2px);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        .payment-container {
+            max-width: 600px;
+            padding: 50px;
+            background: linear-gradient(135deg, #120028, #2a004a);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            display: none;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #d8b4fe;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: calc(100% - 30px);
+            padding: 15px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 1px solid #4a148c;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #d8b4fe;
+            box-shadow: 0 0 5px rgba(216, 180, 254, 0.5);
+        }
+
+        .form-button {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #4a148c, #880e4f);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .form-button:hover {
+            background: linear-gradient(135deg, #880e4f, #4a148c);
+            transform: translateY(-2px);
+        }
+
+        .form-button:active {
+            transform: translateY(1px);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .payment-details {
+            display: none;
+        }
+
+        .date-picker-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .date-picker-container select {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-home-button" onclick="backHome()">Back Home</button>
+    <div class="container">
+        <div class="header">
+            <h2>Mars Colonization Workshop Registration</h2>
+        </div>
+        <div class="details">
+            <h3>Trending workshop Details</h3>
+            <p>Date: 2025-05-25</p>
+            <p>Time: 10:00 AM - 4:00 PM</p>
+            <p>Venue: Virtual Conference Room</p>
+            <p>Requirements: Basic understanding of space technology.</p>
+        </div>
+        <div class="form-container">
+            <h3>Registration Form</h3>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <div id="name-error" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div id="email-error" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" required>
+                    <div id="phone-error" class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization" name="organization" required>
+                </div>
+                <div class="form-group">
+                    <label for="designation">Designation:</label>
+                    <input type="text" id="designation" name="designation" required>
+                </div>
+                <div class="form-group">
+                    <label for="requirements">Do you have any specific requirements for the workshop?</label>
+                    <textarea id="requirements" name="requirements"></textarea>
+                </div>
+                <button type="submit" class="button">Register Now</button>
+                <div id="registration-error-messages" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Clear any previous errors
+            document.getElementById('name-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('phone-error').textContent = '';
+            document.getElementById('registration-error-messages').textContent = '';
+
+            let hasError = false;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Name validation
+            const nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                document.getElementById('name-error').textContent = 'Name must only contain letters and spaces.';
+                hasError = true;
+            }
+
+            // Email validation for Gmail format
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid Gmail address.';
+                hasError = true;
+            }
+
+            // Phone validation
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phone-error').textContent = 'Phone number must be exactly 10 digits.';
+                hasError = true;
+            }
+
+            if (hasError) {
+                return; // Stop if there are errors
+            }
+
+            // Redirect to another webpage if the form is valid
+            window.location.href = 'payment.html';
+ // Redirect user
+        });
+
+        function backHome() {
+            // Redirect back home (or to a specific page)
+            window.location.href = 'index.html'; // Change this to your homepage URL
+        }
+    </script>
+</body>
+</html>

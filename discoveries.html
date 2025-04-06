@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Discoveries</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-image: url(images/hey.jpeg);
+    }
+
+    canvas#stars-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    .hero a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #content-section {
+      width: 100%;
+      height: calc(100vh - 180px);
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars-canvas"></canvas>
+
+  <h1>Mars Discoveries</h1>
+
+  <div class="hero">
+    <a onclick="loadPage('methaneonmars.html')">Methane on Mars</a>
+    <a onclick="loadPage('watergasmars.html')">Water on Mars</a>
+  </div>
+
+  <!-- Load Methane on Mars by default -->
+  <iframe id="content-section" src="methaneonmars.html"></iframe>
+
+  <script>
+    function loadPage(url) {
+      document.getElementById('content-section').src = url;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('stars-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const stars = [];
+      function createStars() {
+        const starCount = Math.floor(canvas.width * canvas.height / 2000);
+
+        for (let i = 0; i < starCount; i++) {
+          stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.5,
+            opacity: Math.random() * 0.8 + 0.2,
+            speed: Math.random() * 0.05
+          });
+        }
+      }
+
+      createStars();
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        stars.forEach(star => {
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+          ctx.fill();
+
+          star.y += star.speed;
+
+          if (star.y > canvas.height) {
+            star.y = 0;
+            star.x = Math.random() * canvas.width;
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
+  </script>
+</body>
+</html>

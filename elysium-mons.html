@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elysium Mons - Mars Exploration</title>
+  <meta name="description" content="Learn about Elysium Mons, a large volcano in the Elysium Planitia region of Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    .info-box {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px;
+      border-radius: var(--radius);
+      display: none;
+      font-size: 14px;
+      max-width: 200px;
+      z-index: 10;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .hotspot:hover {
+      transform: scale(1.2);
+    }
+    .hotspot:hover + .info-box {
+      display: block;
+    }
+    .volcano-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius);
+    }
+    .volcano-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .volcano-facts {
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      transition: background-color 0.3s ease;
+    }
+    .external-link:hover {
+      background-color: var(--accent);
+    }
+    .comparison {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      gap: 1rem;
+    }
+    .comparison-item {
+      flex: 1;
+      text-align: center;
+    }
+    .comparison-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .comparison {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="volcano-content">
+        <h1>Elysium Mons</h1>
+        <p>A large volcano in the Elysium Planitia region of Mars</p>
+        
+        <div class="image-container">
+          <img src="images/elysium-mons.jpg" alt="Elysium Mons" class="volcano-img">
+          
+          <!-- Hotspots for hover info -->
+          <div class="hotspot" style="top: 180px; left: 300px;"></div>
+          <div class="info-box" style="top: 140px; left: 320px;">Summit caldera of Elysium Mons.</div>
+          
+          <div class="hotspot" style="top: 200px; left: 200px;"></div>
+          <div class="info-box" style="top: 220px; left: 220px;">Lava flows on the flanks of the volcano.</div>
+        </div>
+        
+        <div class="volcano-facts">
+          <h2>Key Facts</h2>
+          <ul>
+            <li>Height: 14 km (8.7 miles) above the surrounding plains</li>
+            <li>Diameter: 240 km (149 miles)</li>
+            <li>Summit caldera: 14 km (8.7 miles) in diameter</li>
+            <li>Location: Elysium Planitia region, at 25.0°N 147.2°E</li>
+            <li>Age: Estimated 3-4 billion years old</li>
+            <li>Type: Shield volcano</li>
+          </ul>
+        </div>
+        
+        <div class="volcano-facts">
+          <h2>Comparison with Earth's Volcanoes</h2>
+          <div class="comparison">
+            <div class="comparison-item">
+              <p>Elysium Mons</p>
+              <p class="comparison-value">14 km</p>
+            </div>
+            <div class="comparison-item">
+              <p>Mauna Kea (Hawaii)</p>
+              <p class="comparison-value">10 km</p>
+            </div>
+            <div class="comparison-item">
+              <p>Mount Everest</p>
+              <p class="comparison-value">8.8 km</p>
+            </div>
+          </div>
+          <p>Heights measured from base to summit. Mauna Kea is measured from the ocean floor.</p>
+        </div>
+        
+        <p>
+          Elysium Mons is one of the main volcanoes in the Elysium volcanic province, which is the second largest volcanic region on Mars after the Tharsis region. The volcano is surrounded by an extensive lava plain and is part of a complex that includes two other volcanoes: Hecates Tholus and Albor Tholus.
+        </p>
+        
+        <p>
+          Unlike the Tharsis volcanoes, Elysium Mons has steeper slopes, suggesting a different composition of lava or eruption style. The volcano's flanks are marked by numerous channels that may have been formed by flowing lava or water from melted subsurface ice.
+        </p>
+        
+        <a href="https://en.wikipedia.org/wiki/Elysium_Mons" target="_blank" class="external-link">
+          Learn More about Elysium Mons <i class="fas fa-external-link-alt"></i>
+        </a>
+        
+        <div style="margin: 2rem 0;">
+          <a href="terrain.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Mars Terrain
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

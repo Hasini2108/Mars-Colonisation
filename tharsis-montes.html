@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tharsis Montes - Mars Exploration</title>
+  <meta name="description" content="Learn about Tharsis Montes, a group of three large shield volcanoes on Mars">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+      margin: 2rem auto;
+      max-width: 100%;
+    }
+    .info-box {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px;
+      border-radius: var(--radius);
+      display: none;
+      font-size: 14px;
+      max-width: 200px;
+      z-index: 10;
+    }
+    .hotspot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .hotspot:hover {
+      transform: scale(1.2);
+    }
+    .hotspot:hover + .info-box {
+      display: block;
+    }
+    .volcano-img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: var(--radius);
+    }
+    .volcano-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .volcano-facts {
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .external-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      transition: background-color 0.3s ease;
+    }
+    .external-link:hover {
+      background-color: var(--accent);
+    }
+    .volcano-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 768px) {
+      .volcano-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars Background -->
+  <canvas id="stars-canvas" class="stars-container"></canvas>
+  
+  <!-- Header -->
+  <header class="header header-transparent">
+    <div class="container header-container">
+      <a href="index.html" class="logo">MARS EXPLORATION</a>
+      
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <!-- Desktop navigation -->
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="rovers.html">Rovers</a>
+        <a href="terrain.html">Mars Terrain</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile navigation -->
+    <nav class="mobile-nav container">
+      <a href="index.html">Home</a>
+      <a href="rovers.html">Rovers</a>
+      <a href="terrain.html">Mars Terrain</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="volcano-content">
+        <h1>Tharsis Montes</h1>
+        <p>A group of three large shield volcanoes on Mars</p>
+        
+        <div class="image-container">
+          <img src="images/tharsis-montes.jpg" alt="Tharsis Montes" class="volcano-img">
+          
+          <!-- Hotspots for hover info -->
+          <div class="hotspot" style="top: 280px; left: 30px;"></div>
+          <div class="info-box" style="top: 300px; left: 37px;">Arsia Mons, the southernmost of the three volcanoes.</div>
+          
+          <div class="hotspot" style="top: 170px; left: 80px;"></div>
+          <div class="info-box" style="top: 210px; left: 60px;">Pavonis Mons, the central volcano of the three.</div>
+          
+          <div class="hotspot" style="top: 60px; left: 150px;"></div>
+          <div class="info-box" style="top: 90px; left: 120px;">Ascraeus Mons, the northernmost and tallest of the three volcanoes.</div>
+        </div>
+        
+        <div class="volcano-facts">
+          <h2>The Three Volcanoes</h2>
+          <div class="volcano-grid">
+            <div>
+              <h3>Arsia Mons</h3>
+              <ul>
+                <li>Height: 17.7 km (11 miles)</li>
+                <li>Diameter: 435 km (270 miles)</li>
+                <li>Location: Southernmost volcano</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Pavonis Mons</h3>
+              <ul>
+                <li>Height: 14 km (8.7 miles)</li>
+                <li>Diameter: 375 km (233 miles)</li>
+                <li>Location: Central volcano</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Ascraeus Mons</h3>
+              <ul>
+                <li>Height: 18 km (11.2 miles)</li>
+                <li>Diameter: 460 km (286 miles)</li>
+                <li>Location: Northernmost volcano</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="volcano-facts">
+          <h2>Key Facts</h2>
+          <ul>
+            <li>The three volcanoes are aligned along the Tharsis Ridge</li>
+            <li>They are shield volcanoes, formed by many layers of fluid lava flows</li>
+            <li>They are located on the Tharsis Bulge, a massive volcanic plateau</li>
+            <li>The volcanoes are spaced about 700 km (435 miles) apart</li>
+            <li>They are aligned in a northeast-southwest direction</li>
+            <li>Last eruption: Estimated 100-300 million years ago</li>
+          </ul>
+        </div>
+        
+        <p>
+          The Tharsis Montes are part of the larger Tharsis region, a vast volcanic plateau that contains several other volcanoes including Olympus Mons. The alignment of these three massive volcanoes is thought to be the result of plate movement over a mantle hotspot or a zone of weakness in the Martian crust.
+        </p>
+        
+        <a href="https://en.wikipedia.org/wiki/Tharsis_Montes" target="_blank" class="external-link">
+          Learn More about Tharsis Montes <i class="fas fa-external-link-alt"></i>
+        </a>
+        
+        <div style="margin: 2rem 0;">
+          <a href="terrain.html" class="btn btn-outline">
+            <i class="fas fa-arrow-left"></i> Back to Mars Terrain
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+</body>
+</html>

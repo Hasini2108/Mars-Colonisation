@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Water Exploration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #000000;
+            --accent: #e9eef3;
+            --gray: #333333;
+            --light-gray: #555555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+            background-image: url(images/hey.jpeg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://mars.nasa.gov/system/resources/detail_files/26730_1-mars-globe-valles-marineris-enhanced-full2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            background-image: url(images/hey.jpeg);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--secondary));
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--light-gray);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-img {
+            height: 310px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .card-content p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--secondary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3a7bc8;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--gray);
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .mission-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .mission-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            height: 300px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .mission-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .mission-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .mission-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .mission-item:hover .mission-overlay {
+            transform: translateY(0);
+        }
+
+        .mission-overlay h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .mission-overlay p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .data-viz {
+            margin-top: 50px;
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .chart-container {
+            height: 400px;
+            margin-bottom: 30px;
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .tab-container {
+            margin-top: 50px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: var(--primary);
+            font-weight: bold;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--accent);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: var(--gray);
+            border-radius: 0 0 5px 5px;
+            border: 1px solid var(--light-gray);
+            border-top: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .forum-container {
+            margin-top: 50px;
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .comment-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary);
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            color: var(--primary);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: var(--secondary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a7bc8;
+        }
+
+        .comments {
+            margin-top: 30px;
+        }
+
+        .comment {
+            padding: 20px;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .comment-date {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        .comment-body {
+            color: #ccc;
+        }
+
+        footer {
+            background-color: var(--gray);
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                padding: 20px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::after, .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .redirect-button {
+      background-color: #000;       /* black background */
+      color: white;                 /* white text */
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .redirect-button:hover {
+      background-color: lightgray;  /* light grey on hover */
+      color: black;                 /* optional: change text to black on hover */
+    }
+    </style>
+</head>
+<body>
+    <header class="fade-in">
+        <h1>Water on Mars</h1>
+        <p>Exploring the evidence, implications, and future of water on the Red Planet</p>
+        <div class="scroll-down" id="scrollDown">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="logo">Mars H2O</div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#scientific">Scientific Aspects</a></li>
+                <li><a href="#exploration">Exploration</a></li>
+                <li><a href="#implications">Implications</a></li>
+                <li><a href="#visual">Visual Content</a></li>
+                <li><a href="#forum">Discussion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="scientific" class="slide-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Scientific Aspects</h2>
+                <p>Discover the fascinating scientific discoveries about water on Mars and what they reveal about the planet's history</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/waterice.jpg" alt="Water Ice on Mars">
+                    </div>
+                    <div class="card-content">
+                        <h3>Water Ice Deposits</h3>
+                        <p>Massive underground water ice deposits have been found on Mars, especially near its poles.
+                            These icy layers offer valuable clues about the planet’s past climate and geology.
+                            The polar ice caps hold vast amounts of frozen water, preserved beneath the surface.
+                            If all this ice were melted, it could cover Mars in a global ocean around 5 meters deep.
+                            This discovery boosts hopes for future human missions by offering a potential water source.
+                            It also raises exciting possibilities about past or present microbial life on Mars.</p>
+                        <p>The polar ice caps contain enough water ice that if melted, could cover the entire planet in an ocean about 5 meters deep.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/rsl.jpg" alt="RSL on Mars">
+                    </div>
+                    <div class="card-content">
+                        <h3>Recurring Slope Lineae (RSL)</h3>
+                        <p>Recurring Slope Lineae (RSL) are dark streaks that appear seasonally on Martian slopes.
+                            They emerge during warmer seasons when temperatures rise above -23°C, then fade in cooler months.
+                            These patterns hint at the possible presence of briny liquid water flowing briefly.
+                            Although the exact cause is still under investigation, water activity is a leading theory.
+                            Their discovery is crucial for understanding Mars' current climate and potential habitability.
+                            RSL could also help identify future landing sites for missions searching for life.</p>
+                        <p>While the exact mechanism is still debated, these features suggest that liquid water might still flow on Mars today, albeit in limited amounts.</p>
+                
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/martainoceans.webp" alt="Ancient Martian Ocean">
+                    </div>
+                    <div class="card-content">
+                        <h3>Martian Oceans</h3>
+                        <p>Evidence shows that Mars may have once hosted vast oceans, especially in its northern hemisphere.
+                            Ancient shoreline-like formations and water-altered minerals back this theory.
+                            These findings suggest a significantly wetter and possibly habitable past.
+                            Around 4.3 billion years ago, Mars had enough water to form a global ocean 137 meters deep.
+                            This ancient water may have supported early microbial life, if it ever existed.
+                            Understanding this helps scientists trace Mars' climate evolution and its lost atmosphere.</p>
+                        <p>Scientists estimate that about 4.3 billion years ago, Mars had enough water to cover its entire surface in a layer about 137 meters deep.</p>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="exploration" class="slide-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Exploration and Research</h2>
+                <p>The missions and technology helping us uncover the secrets of Martian water</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>NASA's Mars Exploration Program</h3>
+                        <p>The Curiosity and Perseverance rovers have been instrumental in searching for water on Mars. Curiosity discovered evidence of ancient freshwater lakes, while Perseverance is searching for signs of ancient microbial life in Jezero Crater, a former lakebed.</p>
+                        <p>These rovers analyze soil and rock samples to detect water-related minerals and chemical signatures.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>ExoMars Mission</h3>
+                        <p>The European Space Agency's ExoMars program, in collaboration with Roscosmos, aims to search for signs of past or present life on Mars. The Trace Gas Orbiter is mapping sources of methane and water vapor in the atmosphere, while the upcoming Rosalind Franklin rover will drill up to 2 meters below the surface to search for organic molecules.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Future Mars Missions</h3>
+                        <p>Upcoming missions like NASA's Mars Ice Mapper (planned for late 2020s) will specifically target water ice deposits to help plan for future human exploration. The Japanese Aerospace Exploration Agency (JAXA) is planning the Martian Moons Exploration (MMX) mission to study Phobos and Deimos, which may contain water ice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mission-gallery">
+                <div class="mission-item">
+                    <img src="images/curiosityrover.jpg" alt="Curiosity Rover">
+                    <div class="mission-overlay">
+                        <h3>Curiosity Rover</h3>
+                        <p>Exploring Gale Crater since 2012, discovering evidence of ancient freshwater lakes</p>
+                    </div>
+                </div>
+                <div class="mission-item">
+                    <img src="images/perseverancerover2.jpg" alt="Perseverance Rover">
+                    <div class="mission-overlay">
+                        <h3>Perseverance Rover</h3>
+                        <p>Searching for signs of ancient life in Jezero Crater, collecting samples for future return to Earth</p>
+                    </div>
+                </div>
+                <div class="mission-item">
+                    <img src="images/exomarsorbiter.jpeg" alt="ExoMars Orbiter">
+                    <div class="mission-overlay">
+                        <h3>ExoMars Orbiter</h3>
+                        <p>Mapping atmospheric gases including water vapor since 2016</p>
+                    </div>
+                </div>
+                <div class="mission-item">
+                    <img src="images/icecrapper.jpg" alt="Mars Ice Mapper">
+                    <div class="mission-overlay">
+                        <h3>Mars Ice Mapper</h3>
+                        <p>Future mission to identify accessible water ice deposits (planned for late 2020s)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="implications" class="slide-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Implications and Speculations</h2>
+                <p>What the presence of water means for Mars exploration and the search for life</p>
+            </div>
+
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab active" data-tab="life">Potential for Life</button>
+                    <button class="tab" data-tab="settlement">Human Settlement</button>
+                    <button class="tab" data-tab="astrobiology">Astrobiological Significance</button>
+                </div>
+
+                <div id="life" class="tab-content active">
+                    <h3>The Potential for Life on Mars</h3>
+                    <p>Where there's water, there's potential for life—a key idea that drives the exploration of Mars. The presence of ancient rivers, underground ice, and possible seasonal briny flows increases the likelihood that life may have once existed—or might still exist—on the Red Planet.
+
+                        Microbial life could potentially survive in subsurface reservoirs or thin layers of seasonal liquid water. The discovery of complex organic molecules by the Curiosity rover supports the idea that Mars once had the ingredients needed for life.
+                        
+                        Upcoming missions, like the Mars Sample Return and the Rosalind Franklin rover, aim to search for biosignatures in areas once rich in water, such as ancient lakebeds and hot springs. Finding even the smallest traces of life would revolutionize our understanding of biology and life in the universe.
+                    </p>
+                </div>
+
+                <div id="settlement" class="tab-content">
+                    <h3>Human Settlement on Mars</h3>
+                    <p>Water is one of the most critical resources for sustaining human life, making its availability a cornerstone for any long-term colonization of Mars. The discovery of subsurface water ice in various regions—particularly near the poles and in mid-latitudes—has sparked optimism about the feasibility of establishing permanent human habitats. This ice could be harvested to supply drinking water, support agricultural systems for food production, and be electrolyzed into oxygen for breathable air and hydrogen for rocket fuel, enabling return missions or travel between Martian settlements.
+
+                        Yet, the road to utilizing this water is complex. Much of the ice is buried beneath layers of regolith and is often contaminated with perchlorates—salts that are toxic to humans and would need to be filtered out before the water is safe to use. Additionally, Mars’ thin atmosphere and frigid temperatures make it difficult to store or use liquid water at the surface without specialized infrastructure. Efficient extraction and purification technologies will be essential, potentially involving robotic mining systems and advanced life-support integration.
+                        
+                        Site selection for future colonies is heavily influenced by proximity to water resources, with regions like the northern plains (e.g., Arcadia Planitia) and glacial deposits in mid-latitudes offering promising locations. These areas not only contain accessible ice but also offer relatively stable terrain and favorable solar energy conditions. Establishing bases in such zones could allow astronauts to conduct scientific research, build infrastructure, and develop sustainable living systems.
+                        
+                        As international space agencies and private companies like NASA and SpaceX accelerate plans for crewed missions to Mars, understanding and utilizing Martian water will be a defining factor in turning the Red Planet from a distant dream into a second home for humanity.
+                    </p>
+                </div>
+
+                <div id="astrobiology" class="tab-content">
+                    <h3>Astrobiological Significance</h3>
+                    <p>The study of water on Mars has profound implications for astrobiology—the quest to understand life beyond Earth. Mars, with its ancient river valleys, ice caps, and potential underground brines, presents a unique opportunity to explore whether life could have emerged independently in a world so different from our own. If even the simplest life once existed on Mars, it would suggest that the origin of life is not a rare cosmic event, but a natural process that may occur wherever the right conditions exist.
+
+                        Mars acts as a natural laboratory, helping scientists define the environmental boundaries in which life can thrive. Harsh surface radiation, extreme cold, and limited liquid water mirror the types of challenges organisms might face on distant exoplanets. Studying how Martian geology has been influenced by water helps researchers refine techniques for detecting biosignatures—indicators of past or present life.
+                        
+                        Moreover, robotic missions and future human exploration of Mars could uncover subsurface niches where microbial life might persist even today. Any discovery of Martian life—whether extinct fossils or active microbial colonies—would be one of the most significant scientific breakthroughs in history. It would expand biology beyond Earth-based life and reshape our understanding of life's diversity, adaptability, and universality. Ultimately, Mars may hold the key to answering one of humanity’s oldest questions: Are we alone in the universe?
+                    </p>
+                </div>
+            </div>
+
+    </section>
+
+    <section id="visual" class="slide-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visual Content</h2>`
+                <p>Explore the compelling visual evidence of water on Mars</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/icecrapper.jpg" alt="Martian Ice Cliffs">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ice Cliffs</h3>
+                        <p>These steep Martian cliffs reveal vast ice deposits just beneath the surface, exposed by erosion and landslides.
+                            The visible layers of ice interbedded with dust suggest Mars has undergone repeated climate cycles over millions of years.
+                            These layers act like a natural archive, recording changes in the planet’s tilt, atmosphere, and weather patterns.
+                            Studying them helps scientists understand Mars’ climate history and how water has moved across its surface.
+                            The proximity of this ice to the surface also makes it a valuable resource for future human missions.
+                            Such regions may serve as ideal sites for research stations or even long-term settlements on Mars.</p>
+        
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/craterdelta.jpg" alt="Jezero Crater Delta">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ancient River Delta</h3>
+                        <p>Jezero Crater is a 45-kilometer-wide impact basin on Mars that once hosted a lake fed by an ancient river. The crater features a well-preserved delta, formed as sediments were deposited where the river met the lake billions of years ago. This makes it one of the most promising sites to search for signs of past life. NASA’s Perseverance rover is currently exploring this region, collecting rock samples and analyzing the environment. The layered delta holds clues about Mars’ watery past and potential habitability. These samples are expected to be returned to Earth by future missions for detailed study.</p>
+        
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="images/icemars.jpeg" alt="Ground Ice on Mars">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ground Ice</h3>
+                        <p>This image displays polygonal patterns on the Martian surface, created by the seasonal freezing and thawing of ground ice. These formations are strikingly similar to those found in Earth's Arctic and permafrost regions. The presence of such polygons is strong evidence for subsurface ice, particularly in Mars' mid- to high-latitudes. As temperatures fluctuate, the expansion and contraction of ice cause the ground to crack and shift, forming these distinctive shapes. Studying them helps scientists understand the distribution and behavior of Martian ice. This ground ice is also a key resource for future exploration and possible human habitation.</p>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="forum" class="slide-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join the Discussion</h2>
+                <p>Share your thoughts and questions about water on Mars</p>
+            </div>
+
+            <div class="forum-container">
+                <div class="comment-form">
+                    <h3>Add Your Comment</h3>
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Post Comment</button>
+                    </form>
+                </div>
+
+                <div class="comments" id="commentsSection">
+                    <h3>Recent Discussions</h3>
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">MarsExplorer42</span>
+                            <span class="comment-date">June 15, 2023</span>
+                        </div>
+                        <div class="comment-body">
+                            I find the RSL features fascinating. Do we have any new data on whether they're definitely caused by liquid water or could it be dry sand flows?
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">AstroBioStudent</span>
+                            <span class="comment-date">June 12, 2023</span>
+                        </div>
+                        <div class="comment-body">
+                            The discovery of organic molecules in conjunction with water evidence makes me optimistic about finding signs of past life. What do others think about the chances?
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">FutureColonist</span>
+                            <span class="comment-date">June 8, 2023</span>
+                        </div>
+                        <div class="comment-body">
+                            How feasible is it really to extract and purify water from the Martian ice deposits for human use? The perchlorate problem seems significant.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+                <div class="copyright">
+                    &copy; 2023 Mars Water Exploration Project. All rights reserved.
+                </div>
+            </div>
+        </div>
+        <div>
+            <br/>
+            <br/>
+            <center>
+                <button class="redirect-button" onclick="redirectToPage()">Back to index</button>
+              </center>
+            
+              <script>
+                function redirectToPage() {
+                  window.location.href = "index.html"; // change this to your target page
+                }
+              </script>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navMenu.classList.remove('show');
+            });
+        });
+
+        // Scroll down button
+        document.getElementById('scrollDown').addEventListener('click', () => {
+            window.scrollTo({
+                top: document.getElementById('scientific').offsetTop - 70,
+                behavior: 'smooth'
+            });
+        });
+
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Chart.js implementation
+        const waterChartCtx = document.getElementById('waterChart').getContext('2d');
+        const waterChart = new Chart(waterChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Polar Ice Caps', 'Subsurface Ice', 'Atmospheric Water Vapor', 'Hydrated Minerals'],
+                datasets: [{
+                    label: 'Water Distribution on Mars',
+                    data: [5, 3, 0.01, 2],
+                    backgroundColor: [
+                        'rgba(74, 144, 226, 0.7)',
+                        'rgba(74, 144, 226, 0.7)',
+                        'rgba(74, 144, 226, 0.7)',
+                        'rgba(74, 144, 226, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(74, 144, 226, 1)',
+                        'rgba(74, 144, 226, 1)',
+                        'rgba(74, 144, 226, 1)',
+                        'rgba(74, 144, 226, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Estimated Global Equivalent Layer (meters)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + ' meters';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const timelineChartCtx = document.getElementById('timelineChart').getContext('2d');
+        const timelineChart = new Chart(timelineChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['4.5 BYA', '4 BYA', '3.5 BYA', '3 BYA', '2.5 BYA', '2 BYA', '1.5 BYA', '1 BYA', '500 MYA', 'Present'],
+                datasets: [{
+                    label: 'Estimated Surface Water on Mars',
+                    data: [137, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.1],
+                    fill: true,
+                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                    borderColor: 'rgba(74, 144, 226, 1)',
+                    tension: 0.4,
+                    pointBackgroundColor: 'rgba(74, 144, 226, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Global Equivalent Layer (meters)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Billions of Years Ago (BYA)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + ' meters';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Comment form submission
+        const commentForm = document.getElementById('commentForm');
+        const commentsSection = document.getElementById('commentsSection');
+
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const commentText = document.getElementById('comment').value;
+            
+            if (name && commentText) {
+                const now = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateString = now.toLocaleDateString('en-US', options);
+                
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${name}</span>
+                        <span class="comment-date">${dateString}</span>
+                    </div>
+                    <div class="comment-body">
+                        ${commentText}
+                    </div>
+                `;
+                
+                commentsSection.insertBefore(commentDiv, commentsSection.children[1]);
+                
+                // Clear the form
+                commentForm.reset();
+            }
+        });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

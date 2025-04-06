@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mars Colonization Workshop Payment</title>
+    <style>
+        /* Existing CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(images/hey.jpeg);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: linear-gradient(135deg, #120028, #2a004a);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d8b4fe;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .details {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #4a148c;
+            padding-bottom: 20px;
+        }
+
+        .form-container, .payment-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #4a148c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d8b4fe;
+        }
+
+        .form-group input[type="text"], .form-group input[type="email"], .form-group select, .form-group textarea,
+        .payment-form input[type="text"], .payment-form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #4a148c;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .form-group input[type="text"]:focus, .form-group input[type="email"]:focus, .form-group select:focus, .form-group textarea:focus,
+        .payment-form input[type="text"]:focus, .payment-form input[type="number"]:focus {
+            border-color: #d8b4fe;
+            outline: none;
+            box-shadow: 0 0 5px rgba(216, 180, 254, 0.5);
+        }
+
+        .button {
+            background: linear-gradient(135deg, #4a148c, #880e4f);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #880e4f, #4a148c);
+            transform: translateY(-2px);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        .form-button {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #4a148c, #880e4f);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .form-button:hover {
+            background: linear-gradient(135deg, #880e4f, #4a148c);
+            transform: translateY(-2px);
+        }
+
+        .form-button:active {
+            transform: translateY(1px);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .payment-details {
+            display: none;
+        }
+
+        .date-picker-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .date-picker-container select {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Mars Colonization Workshop Payment</h2>
+        </div>
+
+        <div class="payment-form">
+            <h3>Payment Information</h3>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-type">Card Type:</label>
+                    <select id="card-type" name="card-type" required>
+                        <option value="debit">Debit Card</option>
+                        <option value="credit">Credit Card</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cardholder-name">Cardholder Name:</label>
+                    <input type="text" id="cardholder-name" name="cardholder-name" required>
+                    <div id="cardholder-name-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                    <div id="card-number-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="number" id="cvv" name="cvv" required>
+                    <div id="cvv-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group date-picker-container">
+                    <div>
+                        <label for="expiry-month">Expiry Month:</label>
+                        <select id="expiry-month" name="expiry-month" required>
+                            <option value="">Month</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="expiry-year">Expiry Year:</label>
+                        <select id="expiry-year" name="expiry-year" required>
+                            <option value="">Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pin">Pin Number:</label>
+                    <input type="number" id="pin" name="pin" required>
+                    <div id="pin-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="billing-address">Billing Address:</label>
+                    <textarea id="billing-address" name="billing-address" required></textarea>
+                    <div id="billing-address-error" class="error-message"></div>
+                </div>
+
+                <button type="submit" class="button">Pay Now</button>
+                <div id="payment-error" class="error-message"></div>
+            </form>
+        </div>
+
+        <div id="payment-success" class="payment-details" style="display:none;">
+            <h3>Payment Successful!</h3>
+            <button class="form-button" onclick="backHome()">Back Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Add current and future years for expiry date
+        const expiryYearSelect = document.getElementById('expiry-year');
+        const currentYear = new Date().getFullYear();
+        for (let i = 0; i < 10; i++) {
+            const option = document.createElement('option');
+            option.value = currentYear + i;
+            option.textContent = currentYear + i;
+            expiryYearSelect.appendChild(option);
+        }
+
+        // Handle form submission
+        document.getElementById('payment-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Clear previous error messages
+            document.getElementById('cardholder-name-error').textContent = '';
+            document.getElementById('card-number-error').textContent = '';
+            document.getElementById('cvv-error').textContent = '';
+            document.getElementById('pin-error').textContent = '';
+            document.getElementById('billing-address-error').textContent = '';
+            document.getElementById('payment-error').textContent = '';
+
+            let hasError = false;
+
+            // Get form values
+            const cardType = document.getElementById('card-type').value;
+            const cardholderName = document.getElementById('cardholder-name').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const cvv = document.getElementById('cvv').value;
+            const expiryMonth = document.getElementById('expiry-month').value;
+            const expiryYear = document.getElementById('expiry-year').value;
+            const pin = document.getElementById('pin').value;
+            const billingAddress = document.getElementById('billing-address').value;
+
+            // Validate cardholder name (only letters and spaces)
+            const namePattern = /^[a-zA-Z\s]+$/;
+            if (!namePattern.test(cardholderName)) {
+                document.getElementById('cardholder-name-error').textContent = 'Cardholder name must only contain letters and spaces.';
+                hasError = true;
+            }
+
+            // Validate card number (16 digits)
+            const cardNumberPattern = /^\d{12}$/; // Updated to 12 digits
+            if (!cardNumberPattern.test(cardNumber)) {
+                document.getElementById('card-number-error').textContent = 'Card number must be 12 digits.';
+                hasError = true;
+            }
+
+            // Validate CVV (3 digits)
+            if (cvv.length !== 3 || isNaN(cvv)) {
+                document.getElementById('cvv-error').textContent = 'CVV must be exactly 3 digits.';
+                hasError = true;
+            }
+
+            // Validate expiry date (must be future date)
+            const expiryDate = new Date(expiryYear, expiryMonth - 1);
+            if (expiryDate <= new Date()) {
+                document.getElementById('payment-error').textContent = 'Expiry date must be a future date.';
+                hasError = true;
+            }
+
+            // Validate pin (exactly 4 digits)
+            if (pin.length !== 4 || isNaN(pin)) {
+                document.getElementById('pin-error').textContent = 'Pin number must be exactly 4 digits.';
+                hasError = true;
+            }
+
+            // Validate billing address
+            if (!billingAddress) {
+                document.getElementById('billing-address-error').textContent = 'Billing address is required.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                // If no errors, show payment success
+                document.querySelector('.payment-form').style.display = 'none';
+                document.getElementById('payment-success').style.display = 'block';
+            }
+        });
+
+        function backHome() {
+            window.location.href = 'index.html'; // Change this to your homepage URL
+        }
+    </script>
+</body>
+</html>
